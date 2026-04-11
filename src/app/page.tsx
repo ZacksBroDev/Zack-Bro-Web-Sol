@@ -3,7 +3,6 @@ import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { FAQ } from "@/components/FAQ";
 import { BrowserMockup } from "@/components/BrowserMockup";
-import { SampleSitePreview } from "@/components/SampleSitePreview";
 import { PageCta } from "@/components/PageCta";
 import { TrustStrip } from "@/components/TrustStrip";
 
@@ -225,7 +224,14 @@ export default function HomePage() {
             <FadeIn delay={300} direction="right">
               <div className="hero-mockup-wrapper">
                 <BrowserMockup url="www.greenscapepro.com">
-                  <SampleSitePreview />
+                  <Image
+                    src="/projects/greenscape.png"
+                    alt="GreenScape Pro website preview"
+                    width={1200}
+                    height={800}
+                    style={{ width: "100%", height: "auto", display: "block" }}
+                    priority
+                  />
                 </BrowserMockup>
                 {/* Desktop floating badges */}
                 <div
@@ -611,7 +617,7 @@ export default function HomePage() {
 
       <PageCta
         title="Ready to improve your online presence?"
-        description="Tell me about your business and what you need. I&apos;ll get back to you within 1–2 business days with next steps."
+        description="Tell me about your business and what you need. I'll get back to you within 1–2 business days with next steps."
         sectionClassName="section"
       />
     </>
