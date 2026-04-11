@@ -35,7 +35,8 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
               gap: "3rem",
               alignItems: "start",
             }}
@@ -94,7 +95,7 @@ export default function AboutPage() {
                     don&apos;t convert, or paying agency prices for results they
                     could get from a focused, independent professional. My goal
                     is to be the web partner that small business owners actually
-                    want to work with. Responsive, transparent, and easy to
+                    want to work with: responsive, transparent, and easy to
                     communicate with.
                   </p>
                 </div>
@@ -116,7 +117,8 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
               gap: "2rem",
               marginTop: "2.5rem",
             }}
@@ -170,7 +172,7 @@ export default function AboutPage() {
             >
               <p style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
                 I specialize in working with local service businesses, the kind
-                of businesses where a potential customer's first impression
+                of businesses where a potential customer&apos;s first impression
                 often starts with a Google search. Detailing shops, dental
                 offices, fitness studios, contractors, salons, med spas, and
                 similar service-based businesses.
@@ -198,7 +200,8 @@ export default function AboutPage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 280px), 1fr))",
               gap: "1.5rem",
             }}
           >

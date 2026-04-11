@@ -18,15 +18,22 @@ export function FAQ({ items }: FAQProps) {
     <div style={{ display: "flex", flexDirection: "column" }}>
       {items.map((item, i) => {
         const isOpen = openIndex === i;
+        const buttonId = `faq-button-${i}`;
+        const panelId = `faq-panel-${i}`;
+
         return (
           <div
-            key={i}
+            key={item.question}
             style={{
               borderBottom: "1px solid var(--border-light)",
             }}
           >
             <button
+              type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
+              id={buttonId}
+              aria-expanded={isOpen}
+              aria-controls={panelId}
               style={{
                 width: "100%",
                 padding: "1.25rem 0",
@@ -68,23 +75,28 @@ export function FAQ({ items }: FAQProps) {
               </span>
             </button>
             <div
+              id={panelId}
+              role="region"
+              aria-labelledby={buttonId}
               style={{
-                maxHeight: isOpen ? "500px" : "0",
-                overflow: "hidden",
-                transition: "max-height 0.3s ease",
+                display: "grid",
+                gridTemplateRows: isOpen ? "1fr" : "0fr",
+                transition: "grid-template-rows 0.3s ease",
               }}
             >
-              <p
-                style={{
-                  padding: "0 0 1.25rem",
-                  fontSize: "0.9375rem",
-                  color: "var(--text-secondary)",
-                  lineHeight: 1.7,
-                  maxWidth: "640px",
-                }}
-              >
-                {item.answer}
-              </p>
+              <div style={{ overflow: "hidden" }}>
+                <p
+                  style={{
+                    padding: "0 0 1.25rem",
+                    fontSize: "0.9375rem",
+                    color: "var(--text-secondary)",
+                    lineHeight: 1.7,
+                    maxWidth: "640px",
+                  }}
+                >
+                  {item.answer}
+                </p>
+              </div>
             </div>
           </div>
         );

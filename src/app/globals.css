@@ -13,15 +13,15 @@
   --accent-muted: #D1E3E7;
   --border: #E5E2DC;
   --border-light: #EEEDEA;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08);
   --radius: 8px;
   --radius-lg: 12px;
   --max-width: 1200px;
   --nav-height: 72px;
   --bp-tablet: 768px;
-  --bp-desktop: 1280px;
+  --bp-desktop: 1100px;
 }
 
 @theme inline {
@@ -54,17 +54,35 @@ body {
 }
 
 /* ---- Typography ---- */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-instrument-serif), Georgia, serif;
   color: var(--text-primary);
   line-height: 1.15;
   letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 400; }
-h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; }
-h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: 400; }
-h4 { font-size: 1.125rem; font-weight: 400; }
+h1 {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 400;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
 
 p {
   color: var(--text-secondary);
@@ -246,7 +264,7 @@ p {
   white-space: nowrap;
 }
 
-/* Desktop nav — hidden below 1280 */
+/* Desktop nav — hidden below 1100 */
 .desktop-nav {
   display: none;
   align-items: center;
@@ -279,14 +297,14 @@ p {
   background: transparent;
 }
 
-/* Mobile controls (hamburger + optional CTA) — visible below 1280 */
+/* Mobile controls (hamburger + optional CTA) — visible below 1100 */
 .mobile-nav-controls {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-/* Tablet CTA — only show between 768 and 1279 */
+/* Tablet CTA — only show between 768 and 1099 */
 .tablet-cta {
   display: none;
   padding: 0.5rem 1.25rem;
@@ -512,7 +530,7 @@ p {
    FOOTER
    ================================================================ */
 .footer-link {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.15s ease;
@@ -523,7 +541,7 @@ p {
 }
 
 .footer-link-muted {
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
   font-size: 0.8125rem;
   transition: color 0.15s ease;
@@ -534,9 +552,9 @@ p {
 }
 
 /* ================================================================
-   RESPONSIVE: DESKTOP 1280+
+   RESPONSIVE: DESKTOP 1100+
    ================================================================ */
-@media (min-width: 1280px) {
+@media (min-width: 1100px) {
   .desktop-nav {
     display: flex;
   }
@@ -552,9 +570,9 @@ p {
 }
 
 /* ================================================================
-   RESPONSIVE: TABLET 768–1279
+   RESPONSIVE: TABLET 768–1099
    ================================================================ */
-@media (min-width: 768px) and (max-width: 1279px) {
+@media (min-width: 768px) and (max-width: 1099px) {
   .tablet-cta {
     display: inline-flex;
   }
@@ -579,11 +597,13 @@ p {
     --nav-height: 60px;
   }
 
-  .section, .section-alt {
+  .section,
+  .section-alt {
     padding: 3rem 1rem;
   }
 
-  .btn-primary, .btn-secondary {
+  .btn-primary,
+  .btn-secondary {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
   }
@@ -627,7 +647,7 @@ p {
   }
 
   /* Hero badges — hide desktop floating badges, show mobile ones */
-  .hero-mockup-wrapper > .hero-badge {
+  .hero-mockup-wrapper>.hero-badge {
     display: none;
   }
 
@@ -678,7 +698,8 @@ p {
     display: none;
   }
 
-  .section, .section-alt {
+  .section,
+  .section-alt {
     padding: 2.5rem 0.875rem;
   }
 }

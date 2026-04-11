@@ -97,9 +97,10 @@ export default function WorkPage() {
               Real projects built for real businesses.
             </h1>
             <p className="section-subtext">
-              Each project below was designed around the specific needs of the
-              business, including their audience, their goals, and the outcomes
-              that matter to them.
+              Most of my work is for local service businesses, with a few
+              select founder-led brands mixed in when the fit is right. Each
+              project is shaped around the client&apos;s audience, goals, and the
+              outcomes that matter most.
             </p>
           </FadeIn>
         </div>
@@ -171,7 +172,7 @@ export default function WorkPage() {
                       style={{
                         display: "grid",
                         gridTemplateColumns:
-                          "repeat(auto-fit, minmax(280px, 1fr))",
+                          "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
                         gap: "2rem",
                         marginBottom: "1.5rem",
                       }}

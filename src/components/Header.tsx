@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -17,17 +17,28 @@ export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const previousPathnameRef = useRef(pathname);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   // close menu on route change
   useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+    if (previousPathnameRef.current === pathname) return;
+
+    previousPathnameRef.current = pathname;
+    if (!menuOpen) return;
+
+    const timeoutId = window.setTimeout(() => {
+      setMenuOpen(false);
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [pathname, menuOpen]);
 
   // lock body scroll when menu is open
   useEffect(() => {
@@ -37,7 +48,21 @@ export function Header() {
     };
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const toggleMenu = useCallback(() => setMenuOpen((current) => !current), []);
 
   return (
     <header
@@ -70,12 +95,17 @@ export function Header() {
         }}
       >
         {/* Brand lockup */}
-        <Link href="/" className="brand-lockup" style={{ textDecoration: "none" }}>
+        <Link
+          href="/"
+          className="brand-lockup"
+          style={{ textDecoration: "none" }}
+          onClick={closeMenu}
+        >
           <span className="brand-name">Zackary Brown</span>
           <span className="brand-tag">Web Solutions</span>
         </Link>
 
-        {/* Desktop nav — visible 1280+ */}
+        {/* Desktop nav — visible 1100+ */}
         <nav className="desktop-nav">
           {navLinks.map((link) => (
             <Link
@@ -100,20 +130,32 @@ export function Header() {
           </Link>
         </nav>
 
-        {/* Right side — below 1280: hamburger (+ optional CTA on tablet) */}
+        {/* Right side — below 1100: hamburger (+ optional CTA on tablet) */}
         <div className="mobile-nav-controls">
-          <Link href="/contact" className="btn-primary tablet-cta">
+          <Link
+            href="/contact"
+            className="btn-primary tablet-cta"
+            onClick={closeMenu}
+          >
             Request a Quote
           </Link>
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            type="button"
+            onClick={toggleMenu}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
             className="hamburger-btn"
           >
-            <span className={`hamburger-line ${menuOpen ? "hamburger-open-top" : ""}`} />
-            <span className={`hamburger-line ${menuOpen ? "hamburger-open-mid" : ""}`} />
-            <span className={`hamburger-line ${menuOpen ? "hamburger-open-bot" : ""}`} />
+            <span
+              className={`hamburger-line ${menuOpen ? "hamburger-open-top" : ""}`}
+            />
+            <span
+              className={`hamburger-line ${menuOpen ? "hamburger-open-mid" : ""}`}
+            />
+            <span
+              className={`hamburger-line ${menuOpen ? "hamburger-open-bot" : ""}`}
+            />
           </button>
         </div>
       </div>
@@ -128,8 +170,10 @@ export function Header() {
       {/* Mobile slide-over panel */}
       <div
         className={`mobile-panel ${menuOpen ? "mobile-panel-open" : ""}`}
+        id="mobile-navigation"
         role="dialog"
         aria-modal={menuOpen}
+        aria-hidden={!menuOpen}
       >
         <nav style={{ display: "flex", flexDirection: "column" }}>
           {navLinks.map((link) => (

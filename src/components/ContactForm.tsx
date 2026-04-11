@@ -4,31 +4,41 @@ import { useState, FormEvent } from "react";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    setError(false);
+    setErrorMessage(null);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    formData.append("access_key", "344a67a5-573d-4e5e-a27d-92f54a7d52ef");
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         body: formData,
       });
-      const data = await res.json();
-      if (data.success) {
+
+      const data = (await res.json()) as {
+        success?: boolean;
+        error?: string;
+      };
+
+      if (res.ok && data.success) {
+        form.reset();
         setSubmitted(true);
       } else {
-        setError(true);
+        setErrorMessage(
+          data.error ??
+            "Something went wrong. Please try again or email me directly."
+        );
       }
     } catch {
-      setError(true);
+      setErrorMessage(
+        "Something went wrong. Please try again or email me directly."
+      );
     } finally {
       setSubmitting(false);
     }
@@ -44,6 +54,8 @@ export function ContactForm() {
           padding: "2.5rem",
           textAlign: "center",
         }}
+        role="status"
+        aria-live="polite"
       >
         <p
           style={{
@@ -91,6 +103,7 @@ export function ContactForm() {
             name="name"
             type="text"
             required
+            autoComplete="name"
             className="form-input"
             placeholder="Your name"
           />
@@ -104,6 +117,7 @@ export function ContactForm() {
             name="email"
             type="email"
             required
+            autoComplete="email"
             className="form-input"
             placeholder="you@business.com"
           />
@@ -120,6 +134,7 @@ export function ContactForm() {
           id="phone"
           name="phone"
           type="tel"
+          autoComplete="tel"
           className="form-input"
           placeholder="(555) 123-4567"
         />
@@ -132,6 +147,7 @@ export function ContactForm() {
           id="business"
           name="business"
           type="text"
+          autoComplete="organization"
           className="form-input"
           placeholder="Your business name"
         />
@@ -147,6 +163,7 @@ export function ContactForm() {
           id="website"
           name="website"
           type="url"
+          autoComplete="url"
           className="form-input"
           placeholder="https://yourbusiness.com or social media link"
         />
@@ -160,6 +177,7 @@ export function ContactForm() {
           name="service"
           className="form-input"
           defaultValue=""
+          required
         >
           <option value="" disabled>
             Select an option
@@ -229,14 +247,24 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          minLength={20}
           className="form-input"
           placeholder="What does your business do? What are you hoping to achieve with a new or improved website?"
           style={{ resize: "vertical", minHeight: "120px" }}
         />
       </div>
-      {error && (
-        <p style={{ color: "#e53e3e", fontSize: "0.9375rem", fontWeight: 500 }}>
-          Something went wrong. Please try again or email me directly.
+      {errorMessage && (
+        <p
+          role="alert"
+          style={{ color: "#c53030", fontSize: "0.9375rem", fontWeight: 500 }}
+        >
+          {errorMessage}{" "}
+          <a
+            href="mailto:zackary@zbweb.solutions"
+            style={{ color: "inherit", textDecoration: "underline" }}
+          >
+            zackary@zbweb.solutions
+          </a>
         </p>
       )}
       <button
@@ -248,6 +276,7 @@ export function ContactForm() {
           opacity: submitting ? 0.6 : 1,
         }}
         disabled={submitting}
+        aria-busy={submitting}
       >
         {submitting ? "Sending…" : "Send Inquiry"}
       </button>

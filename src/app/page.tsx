@@ -271,7 +271,8 @@ export default function HomePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 260px), 1fr))",
               gap: "1.5rem",
             }}
           >
@@ -323,14 +324,16 @@ export default function HomePage() {
               Real projects for real businesses.
             </h2>
             <p className="section-subtext" style={{ marginBottom: "3rem" }}>
-              Each project is designed around the client&apos;s specific
-              business needs, audience, and growth goals.
+              The strongest fit is local service businesses, with a few select
+              founder-led brands mixed in. Every project is designed around the
+              client&apos;s audience, goals, and growth priorities.
             </p>
           </FadeIn>
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
               gap: "1.5rem",
             }}
           >
@@ -391,7 +394,8 @@ export default function HomePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 280px), 1fr))",
               gap: "2rem",
               marginTop: "2.5rem",
             }}
@@ -447,7 +451,8 @@ export default function HomePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
               gap: "1.5rem",
             }}
           >
@@ -500,7 +505,8 @@ export default function HomePage() {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(min(100%, 220px), 1fr))",
               gap: "1.25rem",
             }}
           >
