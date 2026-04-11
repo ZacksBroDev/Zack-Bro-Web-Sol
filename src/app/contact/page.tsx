@@ -1,4 +1,5 @@
 import { FadeIn } from "@/components/FadeIn";
+import { CheckList } from "@/components/CheckList";
 import { ContactForm } from "@/components/ContactForm";
 import type { Metadata } from "next";
 
@@ -98,44 +99,16 @@ export default function ContactPage() {
                   <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
                     Good Fit Inquiries
                   </h3>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "0.625rem",
-                    }}
-                  >
-                    {[
+                  <CheckList
+                    items={[
                       "You're a local service business (detailing, dental, fitness, contractor, salon, etc.)",
                       "You need a new website or a redesign of your current one",
                       "You want a professional web presence that generates leads",
                       "You're looking for ongoing website support",
                       "You value clear communication and honest pricing",
-                    ].map((item) => (
-                      <div
-                        key={item}
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: "0.5rem",
-                          fontSize: "0.875rem",
-                          color: "var(--text-secondary)",
-                        }}
-                      >
-                        <span
-                          style={{
-                            color: "var(--accent)",
-                            fontWeight: 600,
-                            flexShrink: 0,
-                            marginTop: "2px",
-                          }}
-                        >
-                          ✓
-                        </span>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                    ]}
+                    containerStyle={{ gap: "0.625rem" }}
+                  />
                 </div>
 
                 {/* What Happens Next */}

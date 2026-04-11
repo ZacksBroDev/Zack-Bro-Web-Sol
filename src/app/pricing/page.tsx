@@ -1,18 +1,21 @@
-import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
 import { FAQ } from "@/components/FAQ";
+import { CheckList } from "@/components/CheckList";
+import { PageCta } from "@/components/PageCta";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Pricing | Zackary Brown Web Solutions",
-  description: "Transparent starting prices for websites, redesigns, and ongoing care plans. Clear pricing for local service businesses.",
+  description:
+    "Transparent starting prices for websites, redesigns, and ongoing care plans. Clear pricing for local service businesses.",
 };
 
 const tiers = [
   {
     name: "Landing Page",
     price: "$500",
-    description: "A single focused page, ideal for a specific service, promotion, or a business that needs a clean web presence fast.",
+    description:
+      "A single focused page, ideal for a specific service, promotion, or a business that needs a clean web presence fast.",
     includes: [
       "One-page custom design",
       "Mobile-responsive layout",
@@ -24,7 +27,8 @@ const tiers = [
   {
     name: "Starter Website",
     price: "$900",
-    description: "A professional multi-page site for businesses ready to establish a clear, credible online presence.",
+    description:
+      "A professional multi-page site for businesses ready to establish a clear, credible online presence.",
     includes: [
       "3–5 custom pages",
       "Mobile-responsive design",
@@ -38,7 +42,8 @@ const tiers = [
   {
     name: "Growth Website",
     price: "$1,800",
-    description: "A more robust site for businesses that need stronger conversion structure, more content, and a polished brand experience.",
+    description:
+      "A more robust site for businesses that need stronger conversion structure, more content, and a polished brand experience.",
     includes: [
       "5–8+ custom pages",
       "Advanced layout and design",
@@ -52,7 +57,8 @@ const tiers = [
   {
     name: "Custom Project",
     price: "$3,000",
-    description: "For businesses with specific requirements, integrations, or larger-scope needs. Scoped and quoted individually.",
+    description:
+      "For businesses with specific requirements, integrations, or larger-scope needs. Scoped and quoted individually.",
     includes: [
       "Custom scope and planning",
       "Advanced functionality",
@@ -130,27 +136,33 @@ const pricingFactors = [
 const faqItems = [
   {
     question: "Are these fixed prices?",
-    answer: "These are starting prices. Final pricing depends on your specific needs, number of pages, content requirements, and any special functionality. I provide a clear quote after our initial conversation.",
+    answer:
+      "These are starting prices. Final pricing depends on your specific needs, number of pages, content requirements, and any special functionality. I provide a clear quote after our initial conversation.",
   },
   {
     question: "Do I need to pay everything upfront?",
-    answer: "I typically work with a 50% deposit to begin, with the remainder due at launch. For larger projects, we can discuss a payment schedule that works for both of us.",
+    answer:
+      "I typically work with a 50% deposit to begin, with the remainder due at launch. For larger projects, we can discuss a payment schedule that works for both of us.",
   },
   {
     question: "What's not included in these prices?",
-    answer: "Domain registration, hosting fees, premium stock photography, and third-party service subscriptions (like booking software) are separate. I'll be transparent about any additional costs during the quoting process.",
+    answer:
+      "Domain registration, hosting fees, premium stock photography, and third-party service subscriptions (like booking software) are separate. I'll be transparent about any additional costs during the quoting process.",
   },
   {
     question: "How long does a project typically take?",
-    answer: "Landing pages can be completed in about a week. Starter sites typically take 2–3 weeks. Growth and custom projects take 3–6 weeks depending on scope. Timelines depend partly on how quickly content and feedback are provided.",
+    answer:
+      "Landing pages can be completed in about a week. Starter sites typically take 2–3 weeks. Growth and custom projects take 3–6 weeks depending on scope. Timelines depend partly on how quickly content and feedback are provided.",
   },
   {
     question: "Can I upgrade my care plan later?",
-    answer: "Yes. You can change your care plan at any time. There are no long-term contracts, and plans are month-to-month.",
+    answer:
+      "Yes. You can change your care plan at any time. There are no long-term contracts, and plans are month-to-month.",
   },
   {
     question: "What if I don't need a care plan?",
-    answer: "Care plans are optional. After launch, you're free to manage your site independently. Plans are there for businesses that want ongoing support without the hassle.",
+    answer:
+      "Care plans are optional. After launch, you're free to manage your site independently. Plans are there for businesses that want ongoing support without the hassle.",
   },
 ];
 
@@ -227,7 +239,8 @@ export default function PricingPage() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                      fontFamily:
+                        "var(--font-instrument-serif), Georgia, serif",
                       fontSize: "2rem",
                       color: "var(--accent)",
                       marginBottom: "0.25rem",
@@ -245,25 +258,12 @@ export default function PricingPage() {
                   >
                     {tier.description}
                   </p>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "auto" }}>
-                    {tier.includes.map((item) => (
-                      <div
-                        key={item}
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: "0.5rem",
-                          fontSize: "0.8125rem",
-                          color: "var(--text-secondary)",
-                        }}
-                      >
-                        <span style={{ color: "var(--accent)", fontWeight: 600, flexShrink: 0, marginTop: "1px" }}>
-                          ✓
-                        </span>
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                  <CheckList
+                    items={tier.includes}
+                    containerStyle={{ marginTop: "auto" }}
+                    itemStyle={{ fontSize: "0.8125rem" }}
+                    checkStyle={{ marginTop: "1px" }}
+                  />
                 </div>
               </FadeIn>
             ))}
@@ -278,8 +278,8 @@ export default function PricingPage() {
             <p className="section-label">After Launch</p>
             <h2 className="section-heading">Monthly website care plans</h2>
             <p className="section-subtext" style={{ marginBottom: "2.5rem" }}>
-              Optional ongoing support to keep your site running smoothly.
-              No long-term contracts. Cancel anytime.
+              Optional ongoing support to keep your site running smoothly. No
+              long-term contracts. Cancel anytime.
             </p>
           </FadeIn>
           <div
@@ -305,39 +305,38 @@ export default function PricingPage() {
                   <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.5rem" }}>
                     {plan.name}
                   </h3>
-                  <div style={{ display: "flex", alignItems: "baseline", gap: "0.25rem", marginBottom: "1.5rem" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "baseline",
+                      gap: "0.25rem",
+                      marginBottom: "1.5rem",
+                    }}
+                  >
                     <span
                       style={{
-                        fontFamily: "var(--font-instrument-serif), Georgia, serif",
+                        fontFamily:
+                          "var(--font-instrument-serif), Georgia, serif",
                         fontSize: "2rem",
                         color: "var(--accent)",
                       }}
                     >
                       {plan.price}
                     </span>
-                    <span style={{ fontSize: "0.875rem", color: "var(--text-tertiary)" }}>
+                    <span
+                      style={{
+                        fontSize: "0.875rem",
+                        color: "var(--text-tertiary)",
+                      }}
+                    >
                       {plan.period}
                     </span>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                    {plan.features.map((feature) => (
-                      <div
-                        key={feature}
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: "0.5rem",
-                          fontSize: "0.8125rem",
-                          color: "var(--text-secondary)",
-                        }}
-                      >
-                        <span style={{ color: "var(--accent)", fontWeight: 600, flexShrink: 0, marginTop: "1px" }}>
-                          ✓
-                        </span>
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
+                  <CheckList
+                    items={plan.features}
+                    itemStyle={{ fontSize: "0.8125rem" }}
+                    checkStyle={{ marginTop: "1px" }}
+                  />
                 </div>
               </FadeIn>
             ))}
@@ -354,7 +353,9 @@ export default function PricingPage() {
               What affects final pricing
             </h2>
           </FadeIn>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
+          >
             {pricingFactors.map((factor, i) => (
               <FadeIn key={factor.title} delay={i * 60}>
                 <div
@@ -403,31 +404,10 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-alt">
-        <div className="container" style={{ textAlign: "center", maxWidth: "600px" }}>
-          <FadeIn>
-            <h2 style={{ marginBottom: "1rem" }}>
-              Ready to get a quote for your project?
-            </h2>
-            <p
-              style={{
-                fontSize: "1.0625rem",
-                color: "var(--text-secondary)",
-                maxWidth: "480px",
-                margin: "0 auto 2rem",
-                lineHeight: 1.7,
-              }}
-            >
-              Tell me about your business and what you&apos;re looking for. I&apos;ll
-              follow up with a clear proposal within 1–2 business days.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Request a Quote
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
+      <PageCta
+        title="Ready to get a quote for your project?"
+        description="Tell me about your business and what you're looking for. I'll follow up with a clear proposal within 1–2 business days."
+      />
     </>
   );
 }

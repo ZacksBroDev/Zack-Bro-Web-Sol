@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { BrowserMockup } from "@/components/BrowserMockup";
+import { PageCta } from "@/components/PageCta";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -268,32 +268,11 @@ export default function WorkPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section">
-        <div
-          className="container"
-          style={{ textAlign: "center", maxWidth: "600px" }}
-        >
-          <FadeIn>
-            <h2 style={{ marginBottom: "1rem" }}>Have a project in mind?</h2>
-            <p
-              style={{
-                fontSize: "1.0625rem",
-                color: "var(--text-secondary)",
-                maxWidth: "480px",
-                margin: "0 auto 2rem",
-                lineHeight: 1.7,
-              }}
-            >
-              I&apos;d like to hear about your business and what you&apos;re
-              looking to accomplish online. Let&apos;s start a conversation.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Request a Quote
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
+      <PageCta
+        title="Have a project in mind?"
+        description="I&apos;d like to hear about your business and what you&apos;re looking to accomplish online. Let&apos;s start a conversation."
+        sectionClassName="section"
+      />
     </>
   );
 }

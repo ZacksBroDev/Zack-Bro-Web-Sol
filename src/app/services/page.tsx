@@ -1,10 +1,12 @@
-import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
+import { CheckList } from "@/components/CheckList";
+import { PageCta } from "@/components/PageCta";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services | Zackary Brown Web Solutions",
-  description: "Custom websites, redesigns, lead capture setup, and ongoing support for local service businesses.",
+  description:
+    "Custom websites, redesigns, lead capture setup, and ongoing support for local service businesses.",
 };
 
 const services = [
@@ -34,7 +36,8 @@ const services = [
       "Updated call-to-action structure",
       "Content and image organization",
     ],
-    bestFor: "Businesses with an existing site that's underperforming or outdated.",
+    bestFor:
+      "Businesses with an existing site that's underperforming or outdated.",
   },
   {
     title: "Quote / Booking / Lead Capture Setup",
@@ -48,7 +51,8 @@ const services = [
       "Conversion-minded page structure",
       "Mobile-optimized forms",
     ],
-    bestFor: "Businesses that need more inquiries and a clearer path from visitor to lead.",
+    bestFor:
+      "Businesses that need more inquiries and a clearer path from visitor to lead.",
   },
   {
     title: "Ongoing Website Care & Support",
@@ -62,7 +66,8 @@ const services = [
       "Small design or text edits",
       "Dedicated support contact",
     ],
-    bestFor: "Any business that wants their website maintained without hiring in-house.",
+    bestFor:
+      "Any business that wants their website maintained without hiring in-house.",
   },
 ];
 
@@ -102,7 +107,9 @@ export default function ServicesPage() {
       {/* Service Cards */}
       <section className="section-alt">
         <div className="container">
-          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+          >
             {services.map((service, i) => (
               <FadeIn key={service.title} delay={i * 80}>
                 <div
@@ -115,39 +122,32 @@ export default function ServicesPage() {
                   }}
                 >
                   <div>
-                    <h2 style={{ fontSize: "clamp(1.25rem, 2vw, 1.5rem)", marginBottom: "1rem" }}>
+                    <h2
+                      style={{
+                        fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+                        marginBottom: "1rem",
+                      }}
+                    >
                       {service.title}
                     </h2>
-                    <p style={{ fontSize: "0.9375rem", lineHeight: 1.7, marginBottom: "1.5rem" }}>
-                      {service.description}
-                    </p>
-
-                    <div
+                    <p
                       style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                        gap: "0.5rem",
+                        fontSize: "0.9375rem",
+                        lineHeight: 1.7,
                         marginBottom: "1.5rem",
                       }}
                     >
-                      {service.includes.map((item) => (
-                        <div
-                          key={item}
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            gap: "0.5rem",
-                            fontSize: "0.875rem",
-                            color: "var(--text-secondary)",
-                          }}
-                        >
-                          <span style={{ color: "var(--accent)", fontWeight: 600, flexShrink: 0, marginTop: "2px" }}>
-                            ✓
-                          </span>
-                          {item}
-                        </div>
-                      ))}
-                    </div>
+                      {service.description}
+                    </p>
+
+                    <CheckList
+                      items={service.includes}
+                      containerStyle={{
+                        gridTemplateColumns:
+                          "repeat(auto-fill, minmax(220px, 1fr))",
+                        marginBottom: "1.5rem",
+                      }}
+                    />
 
                     <p
                       style={{
@@ -172,11 +172,12 @@ export default function ServicesPage() {
           <FadeIn>
             <p className="section-label">Who This Is For</p>
             <h2 className="section-heading">
-              Built for local service businesses that rely on trust and visibility.
+              Built for local service businesses that rely on trust and
+              visibility.
             </h2>
             <p className="section-subtext" style={{ marginBottom: "2.5rem" }}>
-              I work with businesses where a professional online presence directly
-              impacts whether customers choose to reach out.
+              I work with businesses where a professional online presence
+              directly impacts whether customers choose to reach out.
             </p>
           </FadeIn>
           <FadeIn delay={100}>
@@ -207,31 +208,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-alt">
-        <div className="container" style={{ textAlign: "center", maxWidth: "600px" }}>
-          <FadeIn>
-            <h2 style={{ marginBottom: "1rem" }}>
-              Not sure which service you need?
-            </h2>
-            <p
-              style={{
-                fontSize: "1.0625rem",
-                color: "var(--text-secondary)",
-                maxWidth: "480px",
-                margin: "0 auto 2rem",
-                lineHeight: 1.7,
-              }}
-            >
-              Tell me about your business and I&apos;ll recommend the right approach.
-              No commitment, no pressure.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Request a Quote
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
+      <PageCta
+        title="Not sure which service you need?"
+        description="Tell me about your business and I'll recommend the right approach. No commitment, no pressure."
+      />
     </>
   );
 }

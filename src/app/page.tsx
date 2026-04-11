@@ -4,6 +4,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { FAQ } from "@/components/FAQ";
 import { BrowserMockup } from "@/components/BrowserMockup";
 import { SampleSitePreview } from "@/components/SampleSitePreview";
+import { PageCta } from "@/components/PageCta";
 import { TrustStrip } from "@/components/TrustStrip";
 
 const services = [
@@ -608,35 +609,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== FINAL CTA ===== */}
-      <section className="section">
-        <div
-          className="container"
-          style={{ textAlign: "center", maxWidth: "600px" }}
-        >
-          <FadeIn>
-            <h2 style={{ marginBottom: "1rem" }}>
-              Ready to improve your online presence?
-            </h2>
-            <p
-              style={{
-                fontSize: "1.0625rem",
-                color: "var(--text-secondary)",
-                marginBottom: "2rem",
-                maxWidth: "480px",
-                margin: "0 auto 2rem",
-                lineHeight: 1.7,
-              }}
-            >
-              Tell me about your business and what you need. I&apos;ll get back
-              to you within 1–2 business days with next steps.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Request a Quote
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
+      <PageCta
+        title="Ready to improve your online presence?"
+        description="Tell me about your business and what you need. I&apos;ll get back to you within 1–2 business days with next steps."
+        sectionClassName="section"
+      />
     </>
   );
 }

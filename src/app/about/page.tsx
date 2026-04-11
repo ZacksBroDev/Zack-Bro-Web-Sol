@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
+import { PageCta } from "@/components/PageCta";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -238,34 +238,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-alt">
-        <div
-          className="container"
-          style={{ textAlign: "center", maxWidth: "600px" }}
-        >
-          <FadeIn>
-            <h2 style={{ marginBottom: "1rem" }}>
-              Let&apos;s talk about your project.
-            </h2>
-            <p
-              style={{
-                fontSize: "1.0625rem",
-                color: "var(--text-secondary)",
-                maxWidth: "480px",
-                margin: "0 auto 2rem",
-                lineHeight: 1.7,
-              }}
-            >
-              I&apos;d like to learn about your business and see how I can help.
-              Reach out and I&apos;ll get back to you within 1–2 business days.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Request a Quote
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
+      <PageCta
+        title="Let&apos;s talk about your project."
+        description="I&apos;d like to learn about your business and see how I can help. Reach out and I&apos;ll get back to you within 1–2 business days."
+      />
     </>
   );
 }

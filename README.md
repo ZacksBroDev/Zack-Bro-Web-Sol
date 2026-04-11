@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zackary Brown Web Solutions
 
-## Getting Started
+Marketing site for Zackary Brown Web Solutions, built with Next.js App Router.
 
-First, run the development server:
+## Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4 for global styling primitives
+- `next/font` for `DM Sans` and `Instrument Serif`
+
+## Project Structure
+
+```text
+src/app/            Routes and page-level metadata
+src/components/     Shared UI building blocks
+public/             Static images and project screenshots
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Install dependencies and start the dev server:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## Contact Form Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The contact form submits through Web3Forms from the browser.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Copy `.env.example` to `.env.local`
+2. Add your Web3Forms key:
 
-## Deploy on Vercel
+```bash
+NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_key_here
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Without that env var, the form will stay visible but show a configuration error instead of sending.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Quality Checks
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
+
+## Notes
+
+- This repo intentionally keeps most pages as Server Components and limits `"use client"` to interactive UI.
+- The workspace includes AI-agent helper files like `AGENTS.md` and `CLAUDE.md`; they are repo tooling, not app runtime code.

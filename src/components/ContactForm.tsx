@@ -2,36 +2,76 @@
 
 import { useState, FormEvent } from "react";
 
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const SUBMISSION_COOLDOWN_MS = 60_000;
+const MIN_FILL_TIME_MS = 3_000;
+const LAST_SUBMISSION_KEY = "zbws-contact-last-submission-at";
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY?.trim() ?? "";
+
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [startedAt] = useState(() => Date.now());
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     setErrorMessage(null);
 
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setSubmitting(false);
+      setErrorMessage(
+        "The contact form is not configured yet. Please email me directly at zackary@zbweb.solutions."
+      );
+      return;
+    }
+
+    const now = Date.now();
+    const lastSubmission =
+      typeof window !== "undefined"
+        ? Number(window.localStorage.getItem(LAST_SUBMISSION_KEY) ?? "0")
+        : 0;
+
+    if (lastSubmission && now - lastSubmission < SUBMISSION_COOLDOWN_MS) {
+      setSubmitting(false);
+      setErrorMessage(
+        "Please wait about a minute before sending another inquiry."
+      );
+      return;
+    }
+
+    if (now - startedAt < MIN_FILL_TIME_MS) {
+      setSubmitting(false);
+      setErrorMessage("Please take a moment to review your details and try again.");
+      return;
+    }
+
     const form = e.currentTarget;
     const formData = new FormData(form);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
         method: "POST",
         body: formData,
       });
 
       const data = (await res.json()) as {
         success?: boolean;
+        message?: string;
         error?: string;
       };
 
       if (res.ok && data.success) {
         form.reset();
+        window.localStorage.setItem(LAST_SUBMISSION_KEY, String(now));
         setSubmitted(true);
       } else {
         setErrorMessage(
-          data.error ??
+          data.message ??
+            data.error ??
             "Something went wrong. Please try again or email me directly."
         );
       }
