@@ -217,6 +217,25 @@ export default function WorkPage() {
                       </span>
                     ))}
                   </div>
+
+                  {/* Visit Site link */}
+                  <a
+                    href={`https://${project.url.replace(/^https?:\/\//, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.5rem",
+                      marginTop: "1rem",
+                    }}
+                  >
+                    Visit Live Site
+                    <span aria-hidden="true" style={{ fontSize: "1.1em" }}>
+                      ↗
+                    </span>
+                  </a>
                 </div>
               </article>
             </FadeIn>
