@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact | Zackary Brown Web Solutions",
-  description: "Request a quote for your website project. Based in Colorado, working with businesses locally and remotely.",
+  description:
+    "Request a quote for your website project. Based in Colorado, working with businesses locally and remotely.",
 };
 
 export default function ContactPage() {
@@ -39,10 +40,7 @@ export default function ContactPage() {
           >
             {/* Form */}
             <FadeIn>
-              <div
-                className="card"
-                style={{ padding: "2.5rem" }}
-              >
+              <div className="card" style={{ padding: "2.5rem" }}>
                 <h2 style={{ fontSize: "1.5rem", marginBottom: "1.5rem" }}>
                   Request a Quote
                 </h2>
@@ -52,15 +50,27 @@ export default function ContactPage() {
 
             {/* Contact Info & Context */}
             <FadeIn delay={100}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2.5rem",
+                }}
+              >
                 {/* Direct Contact */}
                 <div>
                   <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
                     Direct Contact
                   </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.75rem",
+                    }}
+                  >
                     <a
-                      href="mailto:hello@zackarybrownweb.com"
+                      href="mailto:zackary@zbweb.solutions"
                       style={{
                         color: "var(--accent)",
                         textDecoration: "none",
@@ -68,10 +78,16 @@ export default function ContactPage() {
                         fontWeight: 500,
                       }}
                     >
-                      hello@zackarybrownweb.com
+                      zackary@zbweb.solutions
                     </a>
-                    <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)" }}>
-                      Based in Colorado, working with businesses locally and remotely.
+                    <p
+                      style={{
+                        fontSize: "0.9375rem",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      Based in Colorado, working with businesses locally and
+                      remotely.
                     </p>
                   </div>
                 </div>
@@ -81,7 +97,13 @@ export default function ContactPage() {
                   <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
                     Good Fit Inquiries
                   </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.625rem",
+                    }}
+                  >
                     {[
                       "You're a local service business (detailing, dental, fitness, contractor, salon, etc.)",
                       "You need a new website or a redesign of your current one",
@@ -120,7 +142,13 @@ export default function ContactPage() {
                   <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
                     What Happens Next
                   </h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                    }}
+                  >
                     {[
                       {
                         step: "1",
@@ -179,7 +207,13 @@ export default function ContactPage() {
                           >
                             {item.title}
                           </p>
-                          <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                          <p
+                            style={{
+                              fontSize: "0.875rem",
+                              color: "var(--text-secondary)",
+                              lineHeight: 1.5,
+                            }}
+                          >
                             {item.text}
                           </p>
                         </div>

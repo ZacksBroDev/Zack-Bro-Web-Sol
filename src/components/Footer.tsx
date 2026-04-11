@@ -34,9 +34,16 @@ export function Footer() {
             >
               Zackary Brown
             </p>
-            <p style={{ fontSize: "0.875rem", lineHeight: 1.6, maxWidth: "280px", color: "rgba(255,255,255,0.5)" }}>
-              Founder-led web business building modern websites for local service
-              businesses. Based in Colorado.
+            <p
+              style={{
+                fontSize: "0.875rem",
+                lineHeight: 1.6,
+                maxWidth: "280px",
+                color: "rgba(255,255,255,0.5)",
+              }}
+            >
+              Founder-led web business building modern websites for local
+              service businesses. Based in Colorado.
             </p>
           </div>
 
@@ -54,7 +61,13 @@ export function Footer() {
             >
               Pages
             </p>
-            <nav style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+            <nav
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.625rem",
+              }}
+            >
               {[
                 { href: "/", label: "Home" },
                 { href: "/services", label: "Services" },
@@ -63,11 +76,7 @@ export function Footer() {
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="footer-link"
-                >
+                <Link key={link.href} href={link.href} className="footer-link">
                   {link.label}
                 </Link>
               ))}
@@ -88,18 +97,20 @@ export function Footer() {
             >
               Services
             </p>
-            <nav style={{ display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+            <nav
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.625rem",
+              }}
+            >
               {[
                 "Custom Websites",
                 "Website Redesigns",
                 "Lead Capture Setup",
                 "Ongoing Support",
               ].map((item) => (
-                <Link
-                  key={item}
-                  href="/services"
-                  className="footer-link"
-                >
+                <Link key={item} href="/services" className="footer-link">
                   {item}
                 </Link>
               ))}
@@ -120,17 +131,25 @@ export function Footer() {
             >
               Get In Touch
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.625rem", fontSize: "0.875rem" }}>
-              <a
-                href="mailto:hello@zackarybrownweb.com"
-                className="footer-link"
-              >
-                hello@zackarybrownweb.com
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.625rem",
+                fontSize: "0.875rem",
+              }}
+            >
+              <a href="mailto:zackary@zbweb.solutions" className="footer-link">
+                zackary@zbweb.solutions
               </a>
-              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.875rem" }}>
+              <p
+                style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.875rem" }}
+              >
                 Based in Colorado
               </p>
-              <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.875rem" }}>
+              <p
+                style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.875rem" }}
+              >
                 Working locally &amp; remotely
               </p>
             </div>
@@ -150,12 +169,10 @@ export function Footer() {
           }}
         >
           <p style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>
-            &copy; {currentYear} Zackary Brown Web Solutions. All rights reserved.
+            &copy; {currentYear} Zackary Brown Web Solutions. All rights
+            reserved.
           </p>
-          <Link
-            href="/contact"
-            className="footer-link-muted"
-          >
+          <Link href="/contact" className="footer-link-muted">
             Request a Quote &rarr;
           </Link>
         </div>
