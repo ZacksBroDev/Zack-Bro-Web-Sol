@@ -532,24 +532,24 @@ p {
 /* ================================================================
    FADE-IN ANIMATION
    ================================================================ */
-.fade-in {
+.reveal-up {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.fade-in[data-state="hidden"] {
+.reveal-up[data-state="hidden"] {
   opacity: 0;
   transform: translateY(16px);
 }
 
-.fade-in-right {
+.reveal-right {
   opacity: 1;
   transform: translateX(0);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fade-in-right[data-state="hidden"] {
+.reveal-right[data-state="hidden"] {
   opacity: 0;
   transform: translateX(24px);
 }
@@ -559,8 +559,8 @@ p {
     scroll-behavior: auto;
   }
 
-  .fade-in,
-  .fade-in-right {
+  .reveal-up,
+  .reveal-right {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

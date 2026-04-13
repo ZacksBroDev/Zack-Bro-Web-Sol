@@ -17,6 +17,7 @@ import {
   homeFaqItems,
 } from "@/content/home";
 import { featuredProjects } from "@/content/work";
+import { brand } from "@/content/site";
 
 export default function HomePage() {
   return (
@@ -63,6 +64,13 @@ export default function HomePage() {
                     label="home_hero_request_quote"
                   >
                     Request a Quote
+                  </TrackedLink>
+                  <TrackedLink
+                    href={brand.bookingUrl}
+                    className="btn-secondary"
+                    label="home_hero_book_call"
+                  >
+                    Book a Free Call
                   </TrackedLink>
                   <TrackedLink
                     href="/work"
@@ -385,6 +393,8 @@ export default function HomePage() {
       <PageCta
         title="Ready to improve your online presence?"
         description="Tell me about your business and what you need. I'll get back to you within 1–2 business days with next steps."
+        secondaryHref={brand.bookingUrl}
+        secondaryLabel="Book a Free Call"
         sectionClassName="section"
       />
     </>

@@ -132,6 +132,8 @@ export default function AboutPage() {
       <PageCta
         title="Let's talk about your project."
         description="I'd like to learn about your business and see how I can help. Reach out and I'll get back to you within 1–2 business days."
+        secondaryHref={brand.bookingUrl}
+        secondaryLabel="Book a Free Call"
       />
     </>
   );

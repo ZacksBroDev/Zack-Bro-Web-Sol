@@ -8,6 +8,7 @@ import { SectionIntro } from "@/components/SectionIntro";
 import { CardGrid } from "@/components/CardGrid";
 import { createMetadata } from "@/lib/metadata";
 import { tiers, carePlans, pricingFactors } from "@/content/pricing";
+import { brand } from "@/content/site";
 import { pricingFaqItems } from "@/content/faq";
 
 export const metadata = createMetadata({
@@ -210,6 +211,8 @@ export default function PricingPage() {
       <PageCta
         title="Ready to get a quote for your project?"
         description="Tell me about your business and what you're looking for. I'll follow up with a clear proposal within 1–2 business days."
+        secondaryHref={brand.bookingUrl}
+        secondaryLabel="Book a Free Call"
       />
     </>
   );

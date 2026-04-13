@@ -7,6 +7,7 @@ import { SectionShell } from "@/components/SectionShell";
 import { TrackedLink } from "@/components/TrackedLink";
 import { createMetadata } from "@/lib/metadata";
 import { projects } from "@/content/work";
+import { brand } from "@/content/site";
 
 export const metadata = createMetadata({
   title: "Work",
@@ -246,6 +247,8 @@ export default function WorkPage() {
       <PageCta
         title="Have a project in mind?"
         description="I'd like to hear about your business and what you're looking to accomplish online. Let's start a conversation."
+        secondaryHref={brand.bookingUrl}
+        secondaryLabel="Book a Free Call"
         sectionClassName="section"
       />
     </>

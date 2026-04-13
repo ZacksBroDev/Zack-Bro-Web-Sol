@@ -6,6 +6,7 @@ import { SectionShell } from "@/components/SectionShell";
 import { SectionIntro } from "@/components/SectionIntro";
 import { createMetadata } from "@/lib/metadata";
 import { servicesDetailed } from "@/content/services";
+import { brand } from "@/content/site";
 import { industries } from "@/content/site";
 
 export const metadata = createMetadata({
@@ -117,6 +118,8 @@ export default function ServicesPage() {
       <PageCta
         title="Not sure which service you need?"
         description="Tell me about your business and I'll recommend the right approach. No commitment, no pressure."
+        secondaryHref={brand.bookingUrl}
+        secondaryLabel="Book a Free Call"
       />
     </>
   );

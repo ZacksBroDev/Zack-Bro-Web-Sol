@@ -88,6 +88,33 @@ export default function ContactPage() {
                 </div>
               </div>
 
+              {/* Book a Call */}
+              <div>
+                <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
+                  Prefer to Talk?
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.9375rem",
+                    color: "var(--text-secondary)",
+                    marginBottom: "1rem",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  Book a free 30-minute call to discuss your project. No
+                  pressure, no obligation.
+                </p>
+                <a
+                  href={brand.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  style={{ display: "inline-block", fontSize: "0.9375rem" }}
+                >
+                  Book a Free Call
+                </a>
+              </div>
+
               {/* Good Fit */}
               <div>
                 <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
