@@ -42,6 +42,16 @@ WEB3FORMS_ACCESS_KEY=your_key_here
 
 Without that env var, the form will stay visible but show a configuration error instead of sending.
 
+## Analytics Configuration
+
+Google Analytics 4 is optional. If you want the built-in CTA and form events to send to GA, add your measurement ID:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Without that env var, analytics stays disabled.
+
 ## Quality Checks
 
 ```bash

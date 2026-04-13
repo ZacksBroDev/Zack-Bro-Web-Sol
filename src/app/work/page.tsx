@@ -4,6 +4,7 @@ import { BrowserMockup } from "@/components/BrowserMockup";
 import { PageCta } from "@/components/PageCta";
 import { PageHero } from "@/components/PageHero";
 import { SectionShell } from "@/components/SectionShell";
+import { TrackedLink } from "@/components/TrackedLink";
 import { createMetadata } from "@/lib/metadata";
 import { projects } from "@/content/work";
 
@@ -219,11 +220,10 @@ export default function WorkPage() {
                   </div>
 
                   {/* Visit Site link */}
-                  <a
+                  <TrackedLink
                     href={`https://${project.url.replace(/^https?:\/\//, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="btn"
+                    label={`work_visit_site_${project.name.toLowerCase().replaceAll(" ", "_")}`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -235,7 +235,7 @@ export default function WorkPage() {
                     <span aria-hidden="true" style={{ fontSize: "1.1em" }}>
                       ↗
                     </span>
-                  </a>
+                  </TrackedLink>
                 </div>
               </article>
             </FadeIn>

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { Analytics } from "@/components/Analytics";
 import { createMetadata } from "@/lib/metadata";
 
 const dmSans = DM_Sans({
@@ -36,6 +37,7 @@ export default function RootLayout({
       className={`${dmSans.variable} ${instrumentSerif.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
+        <Analytics />
         <JsonLd />
         <Header />
         <main className="flex-1">{children}</main>

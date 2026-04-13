@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { trackCtaClick } from "@/lib/analytics";
+import { trackCtaClick, trackOutboundClick } from "@/lib/analytics";
 
 interface TrackedLinkProps {
   href: string;
@@ -9,6 +9,7 @@ interface TrackedLinkProps {
   label: string;
   children: React.ReactNode;
   style?: React.CSSProperties;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export function TrackedLink({
@@ -17,11 +18,17 @@ export function TrackedLink({
   label,
   children,
   style,
+  onClick,
 }: TrackedLinkProps) {
   const isExternal = href.startsWith("http") || href.startsWith("mailto:");
 
-  const handleClick = () => {
+  const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
     trackCtaClick(label);
+    if (isExternal) {
+      trackOutboundClick(href);
+    }
+
+    onClick?.(event);
   };
 
   if (isExternal) {

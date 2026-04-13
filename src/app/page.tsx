@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { FAQ } from "@/components/FAQ";
@@ -9,6 +8,7 @@ import { SectionShell } from "@/components/SectionShell";
 import { SectionIntro } from "@/components/SectionIntro";
 import { CardGrid } from "@/components/CardGrid";
 import { FeatureGrid } from "@/components/FeatureGrid";
+import { TrackedLink } from "@/components/TrackedLink";
 import {
   services,
   pricingPreview,
@@ -57,12 +57,20 @@ export default function HomePage() {
               </FadeIn>
               <FadeIn delay={240}>
                 <div className="hero-ctas">
-                  <Link href="/contact" className="btn-primary">
+                  <TrackedLink
+                    href="/contact"
+                    className="btn-primary"
+                    label="home_hero_request_quote"
+                  >
                     Request a Quote
-                  </Link>
-                  <Link href="/work" className="btn-secondary">
+                  </TrackedLink>
+                  <TrackedLink
+                    href="/work"
+                    className="btn-secondary"
+                    label="home_hero_view_work"
+                  >
                     View Work
-                  </Link>
+                  </TrackedLink>
                 </div>
               </FadeIn>
             </div>
@@ -145,9 +153,13 @@ export default function HomePage() {
         </CardGrid>
         <FadeIn delay={320}>
           <div style={{ marginTop: "2.5rem" }}>
-            <Link href="/services" className="btn-secondary">
+            <TrackedLink
+              href="/services"
+              className="btn-secondary"
+              label="home_services_learn_more"
+            >
               Learn More About Services
-            </Link>
+            </TrackedLink>
           </div>
         </FadeIn>
       </SectionShell>
@@ -196,9 +208,13 @@ export default function HomePage() {
         </CardGrid>
         <FadeIn>
           <div style={{ marginTop: "2.5rem" }}>
-            <Link href="/work" className="btn-secondary">
+            <TrackedLink
+              href="/work"
+              className="btn-secondary"
+              label="home_work_view_all"
+            >
               View All Work
-            </Link>
+            </TrackedLink>
           </div>
         </FadeIn>
       </SectionShell>
@@ -287,9 +303,13 @@ export default function HomePage() {
         </CardGrid>
         <FadeIn>
           <div style={{ marginTop: "2.5rem" }}>
-            <Link href="/pricing" className="btn-secondary">
+            <TrackedLink
+              href="/pricing"
+              className="btn-secondary"
+              label="home_pricing_see_full"
+            >
               See Full Pricing
-            </Link>
+            </TrackedLink>
           </div>
         </FadeIn>
       </SectionShell>
@@ -327,9 +347,13 @@ export default function HomePage() {
               </p>
             </div>
             <div>
-              <Link href="/pricing" className="btn-primary">
+              <TrackedLink
+                href="/pricing"
+                className="btn-primary"
+                label="home_care_plans_view"
+              >
                 View Plans
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </FadeIn>
@@ -346,13 +370,14 @@ export default function HomePage() {
         </FadeIn>
         <FadeIn delay={200}>
           <div style={{ marginTop: "2rem", textAlign: "center" }}>
-            <Link
+            <TrackedLink
               href="/pricing#faq"
               className="btn-secondary"
+              label="home_faq_view_all"
               style={{ fontSize: "0.875rem" }}
             >
               View all FAQ &rarr;
-            </Link>
+            </TrackedLink>
           </div>
         </FadeIn>
       </SectionShell>

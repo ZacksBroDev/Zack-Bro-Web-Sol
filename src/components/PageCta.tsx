@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
+import { TrackedLink } from "@/components/TrackedLink";
 
 interface PageCtaProps {
   title: string;
@@ -39,9 +39,13 @@ export function PageCta({
           >
             {description}
           </p>
-          <Link href={href} className="btn-primary">
+          <TrackedLink
+            href={href}
+            className="btn-primary"
+            label={`page_cta_${linkLabel.toLowerCase().replaceAll(" ", "_")}`}
+          >
             {linkLabel}
-          </Link>
+          </TrackedLink>
         </FadeIn>
       </div>
     </section>

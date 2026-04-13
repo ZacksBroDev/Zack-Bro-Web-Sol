@@ -14,7 +14,7 @@ export function createMetadata({
   title,
   description,
   path = "",
-  ogImage = "/og-default.png",
+  ogImage,
 }: PageMetaOptions): Metadata {
   const fullTitle =
     path === "" || path === "/"
@@ -35,20 +35,22 @@ export function createMetadata({
       siteName: brand.name,
       locale: "en_US",
       type: "website",
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: brand.name,
-        },
-      ],
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              width: 1200,
+              height: 630,
+              alt: brand.name,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [ogImage],
+      images: ogImage ? [ogImage] : undefined,
     },
     keywords: [
       "small business website",

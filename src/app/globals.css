@@ -166,6 +166,11 @@ p {
   transform: translateY(-1px);
 }
 
+.btn-primary:focus-visible {
+  outline: 3px solid var(--accent-light);
+  outline-offset: 3px;
+}
+
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -189,6 +194,17 @@ p {
   border-color: var(--accent);
   background: var(--accent-light);
   transform: translateY(-1px);
+}
+
+.btn-secondary:focus-visible,
+.nav-link:focus-visible,
+.mobile-nav-link:focus-visible,
+.footer-link:focus-visible,
+.footer-link-muted:focus-visible,
+.brand-lockup:focus-visible,
+.hamburger-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ---- Cards ---- */
@@ -517,25 +533,38 @@ p {
    FADE-IN ANIMATION
    ================================================================ */
 .fade-in {
-  opacity: 0;
-  transform: translateY(16px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
+.fade-in[data-state="hidden"] {
+  opacity: 0;
+  transform: translateY(16px);
 }
 
 .fade-in-right {
-  opacity: 0;
-  transform: translateX(24px);
+  opacity: 1;
+  transform: translateX(0);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-.fade-in-right.visible {
-  opacity: 1;
-  transform: translateX(0);
+.fade-in-right[data-state="hidden"] {
+  opacity: 0;
+  transform: translateX(24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in,
+  .fade-in-right {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ================================================================

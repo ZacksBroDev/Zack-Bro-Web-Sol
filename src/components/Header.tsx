@@ -3,13 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback, useRef } from "react";
+import { TrackedLink } from "@/components/TrackedLink";
 import { navLinks } from "@/content/site";
+
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const previousPathnameRef = useRef(pathname);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const mobilePanelRef = useRef<HTMLDivElement>(null);
+  const wasMenuOpenRef = useRef(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -41,16 +48,59 @@ export function Header() {
   }, [menuOpen]);
 
   useEffect(() => {
-    if (!menuOpen) return;
+    const panel = mobilePanelRef.current;
+    if (!menuOpen || !panel) return;
+
+    wasMenuOpenRef.current = true;
+
+    const focusableElements = Array.from(
+      panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+    );
+
+    const firstElement = focusableElements[0] ?? panel;
+    const lastElement = focusableElements.at(-1) ?? panel;
+    const focusFrameId = window.requestAnimationFrame(() => {
+      firstElement.focus();
+    });
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setMenuOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        panel.focus();
+        return;
+      }
+
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      window.cancelAnimationFrame(focusFrameId);
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (menuOpen || !wasMenuOpenRef.current) return;
+
+    toggleButtonRef.current?.focus();
+    wasMenuOpenRef.current = false;
   }, [menuOpen]);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);
@@ -109,9 +159,10 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link
+          <TrackedLink
             href="/contact"
             className="btn-primary"
+            label="header_request_quote_desktop"
             style={{
               marginLeft: "0.75rem",
               padding: "0.625rem 1.5rem",
@@ -119,19 +170,21 @@ export function Header() {
             }}
           >
             Request a Quote
-          </Link>
+          </TrackedLink>
         </nav>
 
         {/* Right side — below 1100: hamburger (+ optional CTA on tablet) */}
         <div className="mobile-nav-controls">
-          <Link
+          <TrackedLink
             href="/contact"
             className="btn-primary tablet-cta"
+            label="header_request_quote_tablet"
             onClick={closeMenu}
           >
             Request a Quote
-          </Link>
+          </TrackedLink>
           <button
+            ref={toggleButtonRef}
             type="button"
             onClick={toggleMenu}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -163,9 +216,12 @@ export function Header() {
       <div
         className={`mobile-panel ${menuOpen ? "mobile-panel-open" : ""}`}
         id="mobile-navigation"
+        ref={mobilePanelRef}
         role="dialog"
         aria-modal={menuOpen}
+        aria-label="Mobile navigation"
         aria-hidden={!menuOpen}
+        tabIndex={-1}
       >
         <nav style={{ display: "flex", flexDirection: "column" }}>
           {navLinks.map((link) => (
@@ -180,13 +236,14 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link
+        <TrackedLink
           href="/contact"
           className="btn-primary mobile-menu-cta"
+          label="header_request_quote_mobile"
           onClick={closeMenu}
         >
           Request a Quote
-        </Link>
+        </TrackedLink>
       </div>
     </header>
   );

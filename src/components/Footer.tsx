@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackedLink } from "@/components/TrackedLink";
 import { brand, navLinks } from "@/content/site";
 
 const serviceLinks = [
@@ -164,9 +165,13 @@ export function Footer() {
           <p style={{ fontSize: "0.8125rem", color: "rgba(255,255,255,0.4)" }}>
             &copy; {currentYear} {brand.name}. All rights reserved.
           </p>
-          <Link href="/contact" className="footer-link-muted">
+          <TrackedLink
+            href="/contact"
+            className="footer-link-muted"
+            label="footer_request_quote"
+          >
             Request a Quote &rarr;
-          </Link>
+          </TrackedLink>
         </div>
       </div>
     </footer>
