@@ -6,6 +6,8 @@ interface PageCtaProps {
   description: string;
   href?: string;
   linkLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
   sectionClassName?: "section" | "section-alt";
   containerMaxWidth?: string;
   copyMaxWidth?: string;
@@ -16,6 +18,8 @@ export function PageCta({
   description,
   href = "/contact",
   linkLabel = "Request a Quote",
+  secondaryHref,
+  secondaryLabel,
   sectionClassName = "section-alt",
   containerMaxWidth = "600px",
   copyMaxWidth = "480px",
@@ -46,6 +50,16 @@ export function PageCta({
           >
             {linkLabel}
           </TrackedLink>
+          {secondaryHref && secondaryLabel && (
+            <TrackedLink
+              href={secondaryHref}
+              className="btn-secondary"
+              label={`page_cta_${secondaryLabel.toLowerCase().replaceAll(" ", "_")}`}
+              style={{ marginLeft: "0.75rem" }}
+            >
+              {secondaryLabel}
+            </TrackedLink>
+          )}
         </FadeIn>
       </div>
     </section>

@@ -136,6 +136,14 @@ export function Footer() {
               <a href={`mailto:${brand.email}`} className="footer-link">
                 {brand.email}
               </a>
+              <a
+                href={brand.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link"
+              >
+                Book a Free Call
+              </a>
               <p
                 style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.875rem" }}
               >

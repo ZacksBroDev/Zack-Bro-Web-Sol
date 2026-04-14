@@ -68,7 +68,7 @@ export function FadeIn({
     };
   }, [delay]);
 
-  const animClass = direction === "right" ? "fade-in-right" : "fade-in";
+  const animClass = direction === "right" ? "reveal-right" : "reveal-up";
 
   return (
     <div ref={ref} className={`${animClass} ${className}`} data-state="visible">

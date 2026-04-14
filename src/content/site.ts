@@ -9,6 +9,7 @@ export const brand = {
   email: "zackary@zbweb.solutions",
   location: "Colorado",
   url: "https://zbweb.solutions",
+  bookingUrl: "https://calendly.com/zackary-zbweb/30min",
   description:
     "Founder-led web business building modern, conversion-focused websites for local service businesses. Custom sites, redesigns, and ongoing support. Based in Colorado.",
 } as const;
