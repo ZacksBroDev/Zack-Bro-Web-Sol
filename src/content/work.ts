@@ -149,7 +149,7 @@ export const projects: Project[] = [
     name: "JustMalikBeats",
     type: "Music Production",
     image: "/projects/justmalikbeats.png",
-    url: "main.d2l99u51v53uvg.amplifyapp.com",
+    url: "malikbeats.com",
     challenge:
       "JustMalikBeats needed a professional platform to showcase their catalog, handle licensing, and present a cohesive brand to potential clients in the music industry.",
     solution:
