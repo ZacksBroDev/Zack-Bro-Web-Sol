@@ -392,7 +392,7 @@ export default function HomePage() {
 
       <PageCta
         title="Ready to improve your online presence?"
-        description="Tell me about your business and what you need. I'll get back to you within 1–2 business days with next steps."
+        description="Tell me about your business and what you need. I'll get back to you within 1 to 2 business days with next steps."
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
         sectionClassName="section"

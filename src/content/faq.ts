@@ -23,7 +23,7 @@ export const pricingFaqItems: FAQItem[] = [
   {
     question: "How long does a project typically take?",
     answer:
-      "Landing pages can be completed in about a week. Starter sites typically take 2–3 weeks. Growth and custom projects take 3–6 weeks depending on scope. Timelines depend partly on how quickly content and feedback are provided.",
+      "Landing pages can be completed in about a week. Starter sites typically take 2 to 3 weeks. Growth and custom projects take 3 to 6 weeks depending on scope. Timelines depend partly on how quickly content and feedback are provided.",
   },
   {
     question: "Can I upgrade my care plan later?",
@@ -42,12 +42,12 @@ export const fullFaqItems: FAQItem[] = [
   {
     question: "How much does a website cost?",
     answer:
-      "Projects start at $500 for a single landing page and go up from there depending on scope. Most small business websites fall in the $900–$3,000 range. I provide a clear quote after learning about your needs.",
+      "Projects start at $200 for a WordPress site and go up from there depending on scope. Most small business websites fall in the $900 to $3,000 range. I provide a clear quote after learning about your needs.",
   },
   {
     question: "How long does a project take?",
     answer:
-      "Most websites are completed in 2–4 weeks depending on complexity and how quickly content is provided. I'll give you a realistic timeline during the quoting process.",
+      "Most websites are completed in 2 to 4 weeks depending on complexity and how quickly content is provided. I'll give you a realistic timeline during the quoting process.",
   },
   {
     question: "Do you redesign existing websites?",

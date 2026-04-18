@@ -20,7 +20,7 @@ export default function ContactPage() {
       <PageHero
         label="Contact"
         title="Let's discuss your project."
-        subtitle="Fill out the form below and I'll get back to you within 1–2 business days. No pressure, no obligation."
+        subtitle="Fill out the form below and I'll get back to you within 1 to 2 business days. No pressure, no obligation."
       />
 
       {/* Form + Info */}

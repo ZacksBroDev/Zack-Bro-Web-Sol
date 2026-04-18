@@ -1,6 +1,21 @@
 import type { PricingTier, CarePlan, PricingFactor } from "./types";
 
-export const tiers: PricingTier[] = [
+/** Budget-friendly entry points */
+export const entryTiers: PricingTier[] = [
+  {
+    name: "WordPress Site",
+    price: "$200",
+    description:
+      "A clean, professional WordPress website for businesses that need a reliable online presence without a custom build.",
+    includes: [
+      "WordPress theme setup and customization",
+      "Up to 3 pages",
+      "Mobile-responsive design",
+      "Contact form setup",
+      "Basic SEO and security plugins",
+      "Launch support",
+    ],
+  },
   {
     name: "Landing Page",
     price: "$500",
@@ -14,13 +29,17 @@ export const tiers: PricingTier[] = [
       "Launch support",
     ],
   },
+];
+
+/** Custom-built project tiers */
+export const buildTiers: PricingTier[] = [
   {
     name: "Starter Website",
     price: "$900",
     description:
       "A professional multi-page site for businesses ready to establish a clear, credible online presence.",
     includes: [
-      "3–5 custom pages",
+      "3 to 5 custom pages",
       "Mobile-responsive design",
       "Service and contact pages",
       "Basic SEO structure",
@@ -35,7 +54,7 @@ export const tiers: PricingTier[] = [
     description:
       "A more robust site for businesses that need stronger conversion structure, more content, and a polished brand experience.",
     includes: [
-      "5–8+ custom pages",
+      "5 to 8+ custom pages",
       "Advanced layout and design",
       "Quote/booking form setup",
       "Content organization",
@@ -60,42 +79,45 @@ export const tiers: PricingTier[] = [
   },
 ];
 
+/** All tiers combined (for backward compat) */
+export const tiers: PricingTier[] = [...entryTiers, ...buildTiers];
+
 export const carePlans: CarePlan[] = [
+  {
+    name: "Essential",
+    price: "$25",
+    period: "/month",
+    features: [
+      "Hosting included",
+      "SSL certificate & uptime checks",
+      "Security updates",
+      "Light support via email",
+    ],
+  },
   {
     name: "Basic Care",
     price: "$50",
     period: "/month",
     features: [
-      "Basic site monitoring",
-      "Contact form checks",
-      "Light support via email",
-      "One small update per month",
+      "Everything in Essential",
+      "Monthly site health check",
+      "Contact form monitoring",
+      "One small content update per month",
+      "Basic performance monitoring",
     ],
+    featured: true,
   },
   {
     name: "Standard Support",
     price: "$100",
     period: "/month",
     features: [
-      "Regular small edits and updates",
-      "Content and image updates",
+      "Everything in Basic Care",
+      "Regular edits and content updates",
       "Faster support turnaround",
-      "Monthly maintenance check-in",
       "Priority email support",
-    ],
-    featured: true,
-  },
-  {
-    name: "Growth Support",
-    price: "$150",
-    period: "/month",
-    features: [
-      "More active ongoing support",
-      "More edits included per month",
-      "Fastest turnaround times",
-      "Stronger post-launch support",
       "Performance monitoring",
-      "Priority support channel",
+      "Monthly maintenance check-in",
     ],
   },
 ];
@@ -119,6 +141,6 @@ export const pricingFactors: PricingFactor[] = [
   },
   {
     title: "Timeline",
-    text: "Rush timelines may affect pricing. Standard timelines are 2–4 weeks for most projects.",
+    text: "Rush timelines may affect pricing. Standard timelines are 2 to 4 weeks for most projects.",
   },
 ];

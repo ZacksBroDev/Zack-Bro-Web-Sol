@@ -48,7 +48,7 @@ export default function AboutPage() {
             >
               <Image
                 src="/zackary-brown.jpg"
-                alt={`${brand.founder} — Founder & Developer`}
+                alt={`${brand.founder}, Founder and Developer`}
                 width={600}
                 height={750}
                 style={{ width: "100%", height: "auto", display: "block" }}
@@ -131,7 +131,7 @@ export default function AboutPage() {
 
       <PageCta
         title="Let's talk about your project."
-        description="I'd like to learn about your business and see how I can help. Reach out and I'll get back to you within 1–2 business days."
+        description="I'd like to learn about your business and see how I can help. Reach out and I'll get back to you within 1 to 2 business days."
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
       />

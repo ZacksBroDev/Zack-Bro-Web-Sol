@@ -30,6 +30,7 @@ export const services: ServiceItem[] = [
 
 /* ── Pricing preview (homepage) ── */
 export const pricingPreview = [
+  { name: "WordPress Site", price: "from $200" },
   { name: "Landing Page", price: "from $500" },
   { name: "Starter Website", price: "from $900" },
   { name: "Growth Website", price: "from $1,800" },
@@ -101,12 +102,12 @@ export const homeFaqItems: FAQItem[] = [
   {
     question: "How much does a website cost?",
     answer:
-      "Projects start at $500 for a single landing page and go up from there depending on scope. Most small business websites fall in the $900–$3,000 range. I provide a clear quote after learning about your needs.",
+      "Projects start at $200 for a WordPress site and go up from there depending on scope. Most small business websites fall in the $900 to $3,000 range. I provide a clear quote after learning about your needs.",
   },
   {
     question: "How long does a project take?",
     answer:
-      "Most websites are completed in 2–4 weeks depending on complexity and how quickly content is provided. I'll give you a realistic timeline during the quoting process.",
+      "Most websites are completed in 2 to 4 weeks depending on complexity and how quickly content is provided. I'll give you a realistic timeline during the quoting process.",
   },
   {
     question: "Do you redesign existing websites?",
@@ -121,7 +122,7 @@ export const homeFaqItems: FAQItem[] = [
   {
     question: "Do you offer ongoing support after launch?",
     answer:
-      "Yes. I offer monthly care plans starting at $50/month for basic monitoring and updates, up to $150/month for more active support and content changes.",
+      "Yes. I offer monthly care plans starting at $25/month for hosting and basic maintenance, up to $100/month for more active support and content changes.",
   },
   {
     question: "What makes a professional website better than a DIY site?",

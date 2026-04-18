@@ -17,7 +17,7 @@ export const contactSteps: ContactStep[] = [
   {
     step: "2",
     title: "I review and respond",
-    text: "Within 1–2 business days, I'll reach out to discuss your project.",
+    text: "Within 1 to 2 business days, I'll reach out to discuss your project.",
   },
   {
     step: "3",

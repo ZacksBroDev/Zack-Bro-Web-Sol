@@ -11,7 +11,7 @@ export const projects: Project[] = [
     solution:
       "Built a clean, structured website with clear service breakdowns, trainer credentials, and integrated booking. Every page guides visitors from understanding the training approach to scheduling a session.",
     result:
-      "A credible, conversion-ready web presence that positions MHK Training as a serious fitness business — with a streamlined path from first visit to booked session.",
+      "A credible, conversion-ready web presence that positions MHK Training as a serious fitness business, with a streamlined path from first visit to booked session.",
     capabilities: [
       "Custom design",
       "Service pages",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     image: "/projects/Auto-detailing.png",
     url: "zekie-demo.zackarybrown.net",
     challenge:
-      "The business needed a website that could serve as their primary lead generation tool — showcasing services, building trust, and making it simple for vehicle owners to request a quote.",
+      "The business needed a website that could serve as their primary lead generation tool. It had to showcase services, build trust, and make it simple for vehicle owners to request a quote.",
     solution:
       "Designed a conversion-focused site with clear service tiers, upfront pricing transparency, and prominent quote request forms. Optimized for mobile since the majority of detailing customers search from their phones.",
     result:
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     challenge:
       "A Denver-based mobile detailing business needed a site that could generate leads, showcase real results, and make it dead simple for customers to request a quote via text or call.",
     solution:
-      "Built a conversion-driven single-page site with before/after galleries, service breakdowns, a step-by-step booking flow, and prominent text-to-quote CTAs — optimized for the phone-first behavior of detailing customers.",
+      "Built a conversion-driven single-page site with before/after galleries, service breakdowns, a step-by-step booking flow, and prominent text-to-quote CTAs. Everything was optimized for the phone-first behavior of detailing customers.",
     result:
       "A high-trust, mobile-optimized site that turns visitors into quote requests through social proof, visual results, and a frictionless text-based booking experience.",
     capabilities: [
@@ -81,9 +81,9 @@ export const projects: Project[] = [
     challenge:
       "A Boulder County lawn care and landscaping company needed a professional site that communicated reliability, showcased their range of services, and made it easy for homeowners and businesses to request a quote.",
     solution:
-      "Designed a structured, trust-forward site with clear service categories, a project gallery, service area mapping, and a streamlined quote request flow — all built to convert property owners browsing for dependable outdoor maintenance.",
+      "Designed a structured, trust-forward site with clear service categories, a project gallery, service area mapping, and a streamlined quote request flow. All built to convert property owners browsing for dependable outdoor maintenance.",
     result:
-      "A polished web presence that positions GreenScape Pro as the reliable, professional choice in a crowded local market — with clear paths from discovery to quote request.",
+      "A polished web presence that positions GreenScape Pro as the reliable, professional choice in a crowded local market, with clear paths from discovery to quote request.",
     capabilities: [
       "Custom design",
       "Service pages",
@@ -103,11 +103,11 @@ export const projects: Project[] = [
     image: "/projects/FloorHosting.png",
     url: "stupendous-otter-759661.netlify.app",
     challenge:
-      "A web hosting startup needed a credible, modern site that could compete with established providers — communicating speed, reliability, and real human support without feeling generic or templated.",
+      "A web hosting startup needed a credible, modern site that could compete with established providers. It had to communicate speed, reliability, and real human support without feeling generic or templated.",
     solution:
       "Built a clean, developer-friendly site with clear plan breakdowns, feature highlights, and social proof from real customers. The design balances technical credibility with approachable messaging that appeals to both developers and small business owners.",
     result:
-      "A professional hosting site that builds confidence through clear pricing, strong feature presentation, and authentic testimonials — positioning Floor Hosting as a serious alternative to commodity providers.",
+      "A professional hosting site that builds confidence through clear pricing, strong feature presentation, and authentic testimonials. It positions Floor Hosting as a serious alternative to commodity providers.",
     capabilities: [
       "Custom design",
       "Pricing pages",
@@ -127,11 +127,11 @@ export const projects: Project[] = [
     image: "/projects/NorthPeakDental.png",
     url: "northpeakdental.netlify.app",
     challenge:
-      "A dental practice needed a modern website that reflected their calm, patient-first approach — making it easy for new patients to understand services, build trust, and book their first appointment without friction.",
+      "A dental practice needed a modern website that reflected their calm, patient-first approach. It had to make it easy for new patients to understand services, build trust, and book their first appointment without friction.",
     solution:
       "Designed a clean, welcoming site with clear service breakdowns, an easy onboarding flow for new patients, and prominent appointment CTAs. The design balances professionalism with warmth to match the practice's no-pressure philosophy.",
     result:
-      "A polished, trust-building web presence that positions North Peak Dental as a modern, approachable practice — with a streamlined path from first visit to booked appointment.",
+      "A polished, trust-building web presence that positions North Peak Dental as a modern, approachable practice, with a streamlined path from first visit to booked appointment.",
     capabilities: [
       "Custom design",
       "Service pages",
@@ -155,7 +155,7 @@ export const projects: Project[] = [
     solution:
       "Built a custom platform with audio playback, licensing breakdowns, and a polished brand presentation. The site balances creative expression with clear business functionality.",
     result:
-      "A professional music platform that showcases the catalog effectively and provides a clear path to licensing — positioning JustMalikBeats as a credible, established producer.",
+      "A professional music platform that showcases the catalog effectively and provides a clear path to licensing, positioning JustMalikBeats as a credible, established producer.",
     capabilities: [
       "Custom build",
       "Audio integration",
@@ -177,7 +177,7 @@ export const projects: Project[] = [
     challenge:
       "The Futons needed a web presence that captured their identity as a band while making it easy for fans and event organizers to find information and book them for shows.",
     solution:
-      "Created a site that balances personality with practicality — featuring music samples, show information, and clear contact options for booking inquiries.",
+      "Created a site that balances personality with practicality, featuring music samples, show information, and clear contact options for booking inquiries.",
     result:
       "An authentic online presence that represents the band professionally and makes booking inquiries frictionless for event organizers.",
     capabilities: [
