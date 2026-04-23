@@ -213,6 +213,7 @@ export function ContactForm() {
           id="business"
           name="business"
           type="text"
+          required
           autoComplete="organization"
           className="form-input"
           placeholder="Your business name"
@@ -236,7 +237,7 @@ export function ContactForm() {
       </div>
       <div>
         <label htmlFor="service" className="form-label">
-          What are you looking for?
+          What do you need help with?
         </label>
         <select
           id="service"
@@ -258,35 +259,17 @@ export function ContactForm() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1fr",
           gap: "1.25rem",
         }}
         className="form-grid"
       >
         <div>
-          <label htmlFor="budget" className="form-label">
-            Approximate Budget
-          </label>
-          <select
-            id="budget"
-            name="budget"
-            className="form-input"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select a range
-            </option>
-            <option value="under-500">Under $500</option>
-            <option value="500-1000">$500 – $1,000</option>
-            <option value="1000-2000">$1,000 – $2,000</option>
-            <option value="2000-3000">$2,000 – $3,000</option>
-            <option value="3000-plus">$3,000+</option>
-            <option value="not-sure">Not sure yet</option>
-          </select>
-        </div>
-        <div>
           <label htmlFor="timeline" className="form-label">
-            Timeline
+            Timeline{" "}
+            <span style={{ color: "var(--text-tertiary)", fontWeight: 400 }}>
+              (optional)
+            </span>
           </label>
           <select
             id="timeline"
@@ -297,8 +280,8 @@ export function ContactForm() {
             <option value="" disabled>
               Select a timeline
             </option>
-            <option value="asap">ASAP</option>
-            <option value="1-2-weeks">1–2 weeks</option>
+            <option value="asap">As soon as possible</option>
+            <option value="2-4-weeks">2–4 weeks</option>
             <option value="1-2-months">1–2 months</option>
             <option value="flexible">Flexible</option>
           </select>
