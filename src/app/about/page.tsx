@@ -21,7 +21,7 @@ export default function AboutPage() {
     <>
       <PageHero
         label="About"
-        title="A web business built to help other businesses grow online."
+        title="A founder-led web studio for local service businesses."
         subtitle={`${brand.name} is a founder-led web business focused on building professional, modern websites for local service businesses.`}
       />
 
@@ -39,10 +39,13 @@ export default function AboutPage() {
           <FadeIn>
             <div
               style={{
+                background: "var(--bg-card)",
+                padding: "0.75rem",
                 borderRadius: "var(--radius-lg)",
                 overflow: "hidden",
-                border: "1px solid var(--border-light)",
-                maxWidth: "320px",
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-sm)",
+                maxWidth: "340px",
                 margin: "0 auto",
               }}
             >
@@ -95,24 +98,20 @@ export default function AboutPage() {
         <FadeIn>
           <p className="section-label">Who I Work With</p>
           <h2 className="section-heading" style={{ marginBottom: "1.25rem" }}>
-            Businesses that depend on their online presence to attract
-            customers.
+            Businesses where the website directly influences who reaches out.
           </h2>
           <div
             style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
           >
             <p style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
-              I specialize in working with local service businesses, the kind of
-              businesses where a potential customer&apos;s first impression
-              often starts with a Google search. Detailing shops, dental
-              offices, fitness studios, contractors, salons, med spas, and
-              similar service-based businesses.
+              I mostly work with local service businesses where first
+              impressions start with a Google search: dental practices,
+              detailing shops, landscapers, fitness studios, contractors, and
+              similar service brands.
             </p>
             <p style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
-              The common thread is simple: these businesses need a website that
-              looks professional, communicates clearly, and makes it easy to
-              take the next step, whether that&apos;s requesting a quote,
-              booking an appointment, or making a call.
+              The goal is simple: a website that looks professional,
+              communicates clearly, and makes the next step easy.
             </p>
           </div>
         </FadeIn>
@@ -131,7 +130,7 @@ export default function AboutPage() {
 
       <PageCta
         title="Let's talk about your project."
-        description="I'd like to learn about your business and see how I can help. Reach out and I'll get back to you within 1 to 2 business days."
+        description="Tell me what your business needs and I will follow up with clear next steps."
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
       />

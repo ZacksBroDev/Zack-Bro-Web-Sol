@@ -19,7 +19,7 @@ export default function WorkPage() {
       <PageHero
         label="Previous Work"
         title="Real projects built for real businesses."
-        subtitle="Most of my work is for local service businesses, with a few select founder-led brands mixed in when the fit is right. Each project is shaped around the client's audience, goals, and the outcomes that matter most."
+        subtitle="Most of this work is for local service businesses. Each project is built around clarity, credibility, and lead flow."
       />
 
       <SectionShell variant="alt">
@@ -28,7 +28,7 @@ export default function WorkPage() {
 
       <PageCta
         title="Have a project in mind?"
-        description="I'd like to hear about your business and what you're looking to accomplish online. Let's start a conversation."
+        description="Tell me about your business and I will help you map the right website direction."
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
         sectionClassName="section"

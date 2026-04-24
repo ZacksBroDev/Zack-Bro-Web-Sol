@@ -123,7 +123,6 @@ export async function POST(req: NextRequest) {
       business: body.business?.trim() || "Not provided",
       website: body.website?.trim() || "Not provided",
       service: body.service,
-      budget: body.budget || "Not specified",
       timeline: body.timeline || "Not specified",
       message: body.message?.trim(),
     };

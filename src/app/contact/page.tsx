@@ -1,10 +1,9 @@
 import { FadeIn } from "@/components/FadeIn";
-import { CheckList } from "@/components/CheckList";
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
 import { SectionShell } from "@/components/SectionShell";
 import { createMetadata } from "@/lib/metadata";
-import { goodFitItems, contactSteps } from "@/content/contact";
+import { contactSteps } from "@/content/contact";
 import { brand } from "@/content/site";
 
 export const metadata = createMetadata({
@@ -19,8 +18,8 @@ export default function ContactPage() {
     <>
       <PageHero
         label="Contact"
-        title="Let's discuss your project."
-        subtitle="Fill out the form below and I'll get back to you within 1 to 2 business days. No pressure, no obligation."
+        title="Let's discuss your project"
+        subtitle="Share a few details and I will reply within 1 to 2 business days."
       />
 
       {/* Form + Info */}
@@ -101,8 +100,8 @@ export default function ContactPage() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Book a free 30-minute call to discuss your project. No
-                  pressure, no obligation.
+                  Book a free 30-minute call if you prefer to talk through your
+                  project.
                 </p>
                 <a
                   href={brand.bookingUrl}
@@ -113,17 +112,6 @@ export default function ContactPage() {
                 >
                   Book a Free Call
                 </a>
-              </div>
-
-              {/* Good Fit */}
-              <div>
-                <h3 style={{ fontSize: "1.125rem", marginBottom: "1rem" }}>
-                  Good Fit Inquiries
-                </h3>
-                <CheckList
-                  items={goodFitItems}
-                  containerStyle={{ gap: "0.625rem" }}
-                />
               </div>
 
               {/* What Happens Next */}

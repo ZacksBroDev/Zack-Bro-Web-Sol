@@ -40,20 +40,16 @@ export default function HomePage() {
               </FadeIn>
               <FadeIn delay={80}>
                 <h1 className="hero-heading">
-                  Modern websites that win trust and drive leads.
+                  Websites that build trust and bring in local leads.
                 </h1>
               </FadeIn>
               <FadeIn delay={160}>
                 <p className="hero-subtext">
                   I build clean, professional websites for service businesses
-                  that need clearer messaging, stronger credibility, and an
-                  easier path to inquiries.
+                  that need clearer messaging and an easier path to inquiries.
                 </p>
                 <p className="hero-founder-line">
                   You work directly with me from scope to launch.
-                </p>
-                <p className="hero-slogan">
-                  Built to earn trust. Designed to drive leads.
                 </p>
               </FadeIn>
               <FadeIn delay={240}>
@@ -99,7 +95,7 @@ export default function HomePage() {
                   className="hero-badge"
                   style={{ bottom: "-12px", left: "-12px" }}
                 >
-                  From $200+
+                  From $349+
                 </div>
                 <div
                   className="hero-badge"
@@ -108,7 +104,7 @@ export default function HomePage() {
                   Ongoing care available
                 </div>
                 <div className="hero-badges-mobile">
-                  <span className="hero-badge">From $200+</span>
+                  <span className="hero-badge">From $349+</span>
                   <span className="hero-badge">Ongoing care available</span>
                 </div>
               </div>
@@ -126,8 +122,8 @@ export default function HomePage() {
       <SectionShell variant="alt">
         <SectionIntro
           label="What I Do"
-          heading="Services built around what your business actually needs."
-          subtext="Every project is scoped to fit your goals, timeline, and budget. No cookie-cutter packages, just practical solutions."
+          heading="Services built around what your business needs"
+          subtext="Focused website services with clear scope and practical deliverables."
         />
         <CardGrid>
           {services.map((service, i) => (
@@ -177,7 +173,7 @@ export default function HomePage() {
         <SectionIntro
           label="Recent Work"
           heading="Real projects for real businesses."
-          subtext="The strongest fit is local service businesses, with a few select founder-led brands mixed in. Every project is designed around the client's audience, goals, and growth priorities."
+          subtext="Most projects are for local service businesses where clarity and trust directly affect inquiries."
         />
         <CardGrid minWidth="300px">
           {featuredProjects.map((project, i) => (
@@ -231,7 +227,7 @@ export default function HomePage() {
       <SectionShell variant="alt">
         <SectionIntro
           label="Why Work With Me"
-          heading="The advantages of working directly with an independent web professional."
+          heading="Why businesses hire me directly"
         />
         <div style={{ marginTop: "2.5rem" }}>
           <FeatureGrid items={whyWorkWithMe} />
@@ -243,7 +239,7 @@ export default function HomePage() {
         <SectionIntro
           label="How It Works"
           heading="A straightforward process from inquiry to launch."
-          subtext="No confusion, no black box. Here's exactly how a project works when you hire me."
+          subtext="Clear steps, clear communication, and no guesswork."
         />
         <CardGrid minWidth="300px">
           {processSteps.map((step, i) => (
@@ -283,7 +279,7 @@ export default function HomePage() {
         <SectionIntro
           label="Pricing"
           heading="Straightforward pricing. No hidden fees."
-          subtext="Every project is different, so final pricing depends on scope and requirements. Here's where projects typically start."
+          subtext="Every project is scoped to your needs. Here are typical starting points."
         />
         <CardGrid minWidth="220px">
           {pricingPreview.map((tier, i) => (
@@ -340,7 +336,7 @@ export default function HomePage() {
                   fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
                 }}
               >
-                Monthly website care plans
+                Hosting and care after launch
               </h2>
               <p
                 style={{
@@ -349,9 +345,8 @@ export default function HomePage() {
                   maxWidth: "480px",
                 }}
               >
-                Keep your site updated, secure, and working properly with
-                ongoing support plans starting at $50/month. No long-term
-                contracts.
+                Managed Hosting starts at $20/month. Website Care starts at
+                $59/month for clients who want ongoing support.
               </p>
             </div>
             <div>
@@ -392,7 +387,7 @@ export default function HomePage() {
 
       <PageCta
         title="Ready to improve your online presence?"
-        description="Tell me about your business and what you need. I'll get back to you within 1 to 2 business days with next steps."
+        description="Tell me what your business needs and I will recommend the right starting point."
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
         sectionClassName="section"

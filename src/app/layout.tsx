@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Sans, Lora } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -13,10 +13,10 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-const instrumentSerif = Instrument_Serif({
+const instrumentSerif = Lora({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["500", "600", "700"],
   style: ["normal", "italic"],
 });
 

@@ -51,6 +51,7 @@ export interface ProcessStep {
 export interface Project {
   name: string;
   type: string;
+  cardSummary?: string;
   image: string;
   url: string;
   challenge: string;

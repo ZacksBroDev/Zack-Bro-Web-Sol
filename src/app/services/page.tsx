@@ -3,11 +3,9 @@ import { CheckList } from "@/components/CheckList";
 import { PageCta } from "@/components/PageCta";
 import { PageHero } from "@/components/PageHero";
 import { SectionShell } from "@/components/SectionShell";
-import { SectionIntro } from "@/components/SectionIntro";
 import { createMetadata } from "@/lib/metadata";
 import { servicesDetailed } from "@/content/services";
 import { brand } from "@/content/site";
-import { industries } from "@/content/site";
 
 export const metadata = createMetadata({
   title: "Services",
@@ -21,8 +19,8 @@ export default function ServicesPage() {
     <>
       <PageHero
         label="Services"
-        title="Everything your business needs to look professional online."
-        subtitle="From brand-new websites to ongoing support, I offer focused services that help local service businesses build trust and generate leads."
+        title="Website services built for local service businesses."
+        subtitle="Clear deliverables, practical scope, and a direct path to a more credible online presence."
       />
 
       {/* Service Cards */}
@@ -87,37 +85,9 @@ export default function ServicesPage() {
         </div>
       </SectionShell>
 
-      {/* Who This Is For */}
-      <SectionShell>
-        <SectionIntro
-          label="Who This Is For"
-          heading="Built for local service businesses that rely on trust and visibility."
-          subtext="I work with businesses where a professional online presence directly impacts whether customers choose to reach out."
-        />
-        <FadeIn delay={100}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
-            {industries.map((industry) => (
-              <span
-                key={industry}
-                style={{
-                  padding: "0.5rem 1.125rem",
-                  background: "var(--accent-light)",
-                  color: "var(--accent)",
-                  borderRadius: "100px",
-                  fontSize: "0.875rem",
-                  fontWeight: 500,
-                }}
-              >
-                {industry}
-              </span>
-            ))}
-          </div>
-        </FadeIn>
-      </SectionShell>
-
       <PageCta
         title="Not sure which service you need?"
-        description="Tell me about your business and I'll recommend the right approach. No commitment, no pressure."
+        description="Tell me about your business and I will recommend the right approach."
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
       />

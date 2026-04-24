@@ -30,6 +30,42 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
 
   const active = activeIndex !== null ? projects[activeIndex] : null;
 
+  const getCardSummary = (project: Project): string => {
+    if (project.cardSummary) return project.cardSummary;
+    const firstSentence = project.result.split(". ")[0]?.trim();
+    return firstSentence?.endsWith(".") ? firstSentence : `${firstSentence}.`;
+  };
+
+  const getCardTags = (project: Project): string[] => {
+    const noisyCaps = new Set([
+      "Custom design",
+      "WordPress",
+      "Mobile-responsive",
+      "Mobile-first",
+      "Responsive layout",
+    ]);
+    const filtered = project.capabilities.filter((cap) => !noisyCaps.has(cap));
+    const source = filtered.length > 0 ? filtered : project.capabilities;
+    return source.slice(0, 2);
+  };
+
+  const getBadgeLabel = (project: Project): string => {
+    const badgeMap: Record<string, string> = {
+      "Dental Practice": "Dental",
+      "Automotive Detailing": "Auto Detailing",
+      "Lawn Care & Landscaping": "Landscaping",
+      "Martial Arts / Fitness": "Fitness",
+      "Bike Shop": "Bike Shop",
+      "Music Production": "Music Production",
+      "Music / Band": "Music / Band",
+      "Design Studio": "Design Studio",
+      "Hosting / SaaS Concept": "Hosting Concept",
+      "E-Commerce": "E-Commerce",
+    };
+
+    return badgeMap[project.type] ?? project.type;
+  };
+
   return (
     <>
       {/* Thumbnail Grid */}
@@ -43,6 +79,9 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
             style={{ animationDelay: `${i * 60}ms` }}
           >
             <div className="project-grid-image">
+              <span className="project-grid-badge">
+                {getBadgeLabel(project)}
+              </span>
               <Image
                 src={project.image}
                 alt={`${project.name} website screenshot`}
@@ -56,10 +95,10 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
               />
             </div>
             <div className="project-grid-info">
-              <span className="project-grid-type">{project.type}</span>
               <h3 className="project-grid-name">{project.name}</h3>
+              <p className="project-grid-summary">{getCardSummary(project)}</p>
               <div className="project-grid-caps">
-                {project.capabilities.slice(0, 3).map((cap) => (
+                {getCardTags(project).map((cap) => (
                   <span key={cap} className="project-grid-cap">
                     {cap}
                   </span>

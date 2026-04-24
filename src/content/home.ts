@@ -3,27 +3,27 @@ import type { ServiceItem, ProcessStep, FeatureItem, FAQItem } from "./types";
 /* ── Services (overview cards) ── */
 export const services: ServiceItem[] = [
   {
-    title: "Custom Small Business Websites",
+    title: "Custom Websites",
     description:
-      "Purpose-built websites designed around your business, your customers, and your goals. Every site is built to work for you, not pulled from a template.",
+      "Purpose-built websites designed around your business goals, services, and audience.",
     icon: "◆",
   },
   {
     title: "Website Redesigns",
     description:
-      "Already have a site that isn't performing? I'll rebuild it with clearer messaging, better mobile experience, and a stronger path to leads.",
+      "Rebuild outdated sites with clearer messaging, modern structure, and better mobile performance.",
     icon: "◇",
   },
   {
-    title: "Quote & Lead Capture Setup",
+    title: "Lead Capture Setup",
     description:
-      "Forms, booking integrations, and call-to-action structure that makes it easy for your customers to reach you.",
+      "Set up quote forms, booking flows, and calls to action that make inquiries easier.",
     icon: "▣",
   },
   {
     title: "Ongoing Website Care",
     description:
-      "Monthly support plans that keep your site updated, secure, and performing so you can focus on running your business.",
+      "Ongoing support plans to keep your site secure, updated, and running smoothly.",
     icon: "○",
   },
 ];
@@ -43,37 +43,32 @@ export const processSteps: ProcessStep[] = [
     step: "01",
     title: "Discovery",
     description:
-      "We talk about your business, your customers, and what you need your website to accomplish.",
+      "We discuss your business goals, audience, and what your site needs to do.",
   },
   {
     step: "02",
     title: "Scope & Quote",
-    description:
-      "I put together a clear proposal with pricing, timeline, and deliverables. No surprises.",
+    description: "You get a clear proposal with scope, pricing, and timeline.",
   },
   {
     step: "03",
     title: "Build",
-    description:
-      "I design and develop your site, keeping you updated along the way with progress check-ins.",
+    description: "I design and build the site with focused progress check-ins.",
   },
   {
     step: "04",
     title: "Review & Refine",
-    description:
-      "You review the site and I make refinements until everything looks and works exactly right.",
+    description: "You review the build and I refine details before launch.",
   },
   {
     step: "05",
     title: "Launch",
-    description:
-      "We go live. I handle the technical details including domain, hosting setup, and final checks.",
+    description: "I handle launch setup, domain connection, and final checks.",
   },
   {
     step: "06",
     title: "Ongoing Support",
-    description:
-      "After launch, I'm here for updates, questions, and ongoing care if you need it.",
+    description: "Optional hosting and care are available after launch.",
   },
 ];
 
@@ -81,19 +76,19 @@ export const processSteps: ProcessStep[] = [
 export const whyWorkWithMe: FeatureItem[] = [
   {
     title: "Direct Communication",
-    text: "You work with me directly. Not an account manager, not a junior developer. One point of contact who knows your project inside and out.",
+    text: "You work directly with me from planning to launch.",
   },
   {
     title: "Business-Focused Approach",
-    text: "Every design decision is made to help your business look credible, communicate clearly, and convert visitors into inquiries.",
+    text: "Every design decision is tied to clarity, trust, and lead flow.",
   },
   {
     title: "Transparent Process",
-    text: "Clear pricing, honest timelines, and regular updates. No scope creep surprises, no vanishing after launch.",
+    text: "Clear pricing, realistic timelines, and straightforward communication.",
   },
   {
     title: "Built for Performance",
-    text: "Fast-loading, mobile-first, and structured for search visibility. Your site works well for customers and for your business.",
+    text: "Fast, mobile-first builds structured for local search visibility.",
   },
 ];
 
@@ -107,7 +102,7 @@ export const homeFaqItems: FAQItem[] = [
   {
     question: "How long does a project take?",
     answer:
-      "Most websites are completed in 2 to 4 weeks depending on complexity and how quickly content is provided. I'll give you a realistic timeline during the quoting process.",
+      "Most projects are completed in 2 to 4 weeks, depending on scope and how quickly content and feedback are provided.",
   },
   {
     question: "Do you redesign existing websites?",
@@ -122,7 +117,7 @@ export const homeFaqItems: FAQItem[] = [
   {
     question: "Do you offer ongoing support after launch?",
     answer:
-      "Yes. I offer monthly care plans starting at $25/month for hosting and basic maintenance, up to $100/month for more active support and content changes.",
+      "Yes. Managed Hosting starts at $20/month and Website Care starts at $59/month.",
   },
   {
     question: "What makes a professional website better than a DIY site?",

@@ -138,11 +138,7 @@ export function ContactForm() {
       onFocus={handleFocus}
       style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
     >
-      <input
-        type="hidden"
-        name="subject"
-        value={CONTACT_FORM_SUBJECT}
-      />
+      <input type="hidden" name="subject" value={CONTACT_FORM_SUBJECT} />
       {/* Honeypot */}
       <input
         type="text"

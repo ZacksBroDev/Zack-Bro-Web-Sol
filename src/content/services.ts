@@ -2,9 +2,9 @@ import type { ServiceItem } from "./types";
 
 export const servicesDetailed: ServiceItem[] = [
   {
-    title: "Custom Small Business Websites",
+    title: "Custom Websites",
     description:
-      "A website built from scratch around your business, not a generic template with your logo dropped in. I design and develop each site to communicate what you do, who you serve, and why someone should choose you.",
+      "A website built around your business goals, audience, and services, not a recycled template.",
     icon: "◆",
     includes: [
       "Custom design and layout",
@@ -14,12 +14,12 @@ export const servicesDetailed: ServiceItem[] = [
       "Analytics setup",
       "Launch support",
     ],
-    bestFor: "New businesses or businesses without a professional website.",
+    bestFor: "New businesses or businesses without a strong professional site.",
   },
   {
     title: "Website Redesigns",
     description:
-      "If your current site is outdated, hard to navigate, or not helping you get leads, it's time for a rebuild. I'll restructure your site with modern design, clear messaging, and a layout that actually converts visitors into inquiries.",
+      "If your current site feels outdated or underperforming, I rebuild it with clearer structure, stronger messaging, and better usability.",
     icon: "◇",
     includes: [
       "Full visual and structural redesign",
@@ -30,12 +30,12 @@ export const servicesDetailed: ServiceItem[] = [
       "Content and image organization",
     ],
     bestFor:
-      "Businesses with an existing site that's underperforming or outdated.",
+      "Businesses with an existing site that is outdated or not generating leads.",
   },
   {
-    title: "Quote / Booking / Lead Capture Setup",
+    title: "Lead Capture Setup",
     description:
-      "Your website should make it easy for potential customers to take action. I set up contact forms, quote request flows, and booking integrations so leads don't slip through the cracks.",
+      "Set up forms and booking flows so visitors can quickly request a quote, call, or book.",
     icon: "▣",
     includes: [
       "Contact and quote request forms",
@@ -46,22 +46,22 @@ export const servicesDetailed: ServiceItem[] = [
       "Mobile-optimized forms",
     ],
     bestFor:
-      "Businesses that need more inquiries and a clearer path from visitor to lead.",
+      "Businesses that need more inquiries and a cleaner path from visit to lead.",
   },
   {
-    title: "Ongoing Website Care & Support",
+    title: "Website Care & Support",
     description:
-      "After launch, your site still needs attention. I offer monthly care plans that cover updates, monitoring, and small changes so your site stays current and you don't have to think about it.",
+      "After launch, keep your website maintained, monitored, and current with lightweight monthly support.",
     icon: "○",
     includes: [
       "Regular monitoring and uptime checks",
-      "Content and image updates",
+      "Small content and image updates",
       "Security and performance checks",
       "Contact form monitoring",
-      "Small design or text edits",
+      "Small design and text edits",
       "Dedicated support contact",
     ],
     bestFor:
-      "Any business that wants their website maintained without hiring in-house.",
+      "Businesses that want ongoing support without handling website maintenance internally.",
   },
 ];

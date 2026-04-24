@@ -1,6 +1,6 @@
 import type { Project } from "./types";
 
-export const projects: Project[] = [
+const projectCatalog: Project[] = [
   {
     name: "Northline Studio",
     type: "Design Studio",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
   },
   {
     name: "MHK Training",
-    type: "Fitness & Training",
+    type: "Martial Arts / Fitness",
     image: "/projects/mhk-training.png",
     url: "www.mhktraining.com",
     challenge:
@@ -199,7 +199,7 @@ export const projects: Project[] = [
   },
   {
     name: "Floor Hosting",
-    type: "Web Hosting",
+    type: "Hosting / SaaS Concept",
     image: "/projects/FloorHosting.png",
     url: "stupendous-otter-759661.netlify.app",
     challenge:
@@ -307,6 +307,24 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+const projectTypePriority: Record<string, number> = {
+  "Dental Practice": 1,
+  "Automotive Detailing": 2,
+  "Lawn Care & Landscaping": 3,
+  "Martial Arts / Fitness": 4,
+  "Bike Shop": 5,
+  "Design Studio": 6,
+  Contractors: 7,
+};
+
+export const projects: Project[] = [...projectCatalog].sort((a, b) => {
+  const aPriority = projectTypePriority[a.type] ?? 99;
+  const bPriority = projectTypePriority[b.type] ?? 99;
+
+  if (aPriority !== bPriority) return aPriority - bPriority;
+  return a.name.localeCompare(b.name);
+});
 
 /* Homepage featured subset */
 export const featuredProjects = projects.slice(0, 3);
