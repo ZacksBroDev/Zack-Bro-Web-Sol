@@ -6,9 +6,25 @@ export { homeFaqItems } from "./home";
 /* ── Pricing FAQ ── */
 export const pricingFaqItems: FAQItem[] = [
   {
-    question: "Are these fixed prices?",
+    question: "Are these fixed prices or starting prices?",
     answer:
-      "These are starting prices. Final pricing depends on your specific needs, number of pages, content requirements, and any special functionality. I provide a clear quote after our initial conversation.",
+      "These are starting prices. Final pricing depends on your platform choice (WordPress or custom), scope, content needs, and functionality. You'll get a clear quote before any work starts.",
+  },
+  {
+    question:
+      "Why can a one-page custom site cost more than a three-page WordPress site?",
+    answer:
+      "Page count is only one factor. WordPress is usually the faster, lower-cost path, while custom work is priced for tailored design control and messaging structure. Custom landing pages start focused and scale with scope.",
+  },
+  {
+    question: "What is included in Managed Hosting at $20/mo?",
+    answer:
+      "Managed Hosting includes secure hosting, SSL, backups, uptime monitoring, and basic domain or DNS help if needed. It does not include content edits, design changes, larger updates, new pages or features, or ongoing support work.",
+  },
+  {
+    question: "What is included in Website Care at $59/mo?",
+    answer:
+      "Website Care includes everything in Managed Hosting plus regular maintenance checks, contact form checks, one small content update per month, and light email support.",
   },
   {
     question: "Do I need to pay everything upfront?",
@@ -18,17 +34,17 @@ export const pricingFaqItems: FAQItem[] = [
   {
     question: "What's not included in these prices?",
     answer:
-      "Domain registration, hosting fees, premium stock photography, and third-party service subscriptions (like booking software) are separate. I'll be transparent about any additional costs during the quoting process.",
+      "Domain registration, premium stock photography, and third-party service subscriptions (like booking software) are separate. Hosting is optional and selected in your final scope.",
   },
   {
-    question: "How long does a project typically take?",
+    question: "How long does a project usually take?",
     answer:
-      "Landing pages can be completed in about a week. Starter sites typically take 2 to 3 weeks. Growth and custom projects take 3 to 6 weeks depending on scope. Timelines depend partly on how quickly content and feedback are provided.",
+      "WordPress quick-start projects are typically the fastest. Custom builds usually take longer due to planning and design depth. Timeline depends on scope and how quickly content and feedback are provided.",
   },
   {
-    question: "Can I upgrade my care plan later?",
+    question: "Can I switch from Managed Hosting to Website Care later?",
     answer:
-      "Yes. You can change your care plan at any time. There are no long-term contracts, and plans are month-to-month.",
+      "Yes. You can move from hosting-only to Website Care at any time. Both options are month-to-month.",
   },
   {
     question: "What if I don't need a care plan?",
@@ -42,7 +58,7 @@ export const fullFaqItems: FAQItem[] = [
   {
     question: "How much does a website cost?",
     answer:
-      "Projects start at $200 for a WordPress site and go up from there depending on scope. Most small business websites fall in the $900 to $3,000 range. I provide a clear quote after learning about your needs.",
+      "WordPress quick-start websites begin at $349. Custom websites begin at $399 and scale with scope. I provide a clear scoped quote after learning about your goals.",
   },
   {
     question: "How long does a project take?",
@@ -62,7 +78,7 @@ export const fullFaqItems: FAQItem[] = [
   {
     question: "Do you offer ongoing support after launch?",
     answer:
-      "Yes. I offer monthly care plans starting at $50/month for basic monitoring and updates, up to $150/month for more active support and content changes.",
+      "Yes. After launch you can choose Managed Hosting at $20/month for hosting essentials, or Website Care at $59/month for ongoing help and updates.",
   },
   {
     question: "Can you work with businesses outside Colorado?",

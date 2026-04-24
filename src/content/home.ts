@@ -30,11 +30,11 @@ export const services: ServiceItem[] = [
 
 /* ── Pricing preview (homepage) ── */
 export const pricingPreview = [
-  { name: "WordPress Site", price: "from $200" },
-  { name: "Landing Page", price: "from $500" },
-  { name: "Starter Website", price: "from $900" },
-  { name: "Growth Website", price: "from $1,800" },
-  { name: "Custom Project", price: "from $3,000" },
+  { name: "WordPress Site", price: "from $349" },
+  { name: "Landing Page", price: "from $399" },
+  { name: "Starter Website", price: "from $999" },
+  { name: "Growth Website", price: "from $1,499" },
+  { name: "Advanced Website / Custom Functionality", price: "from $1,800" },
 ] as const;
 
 /* ── Process steps ── */
@@ -102,7 +102,7 @@ export const homeFaqItems: FAQItem[] = [
   {
     question: "How much does a website cost?",
     answer:
-      "Projects start at $200 for a WordPress site and go up from there depending on scope. Most small business websites fall in the $900 to $3,000 range. I provide a clear quote after learning about your needs.",
+      "Projects start at $349 for a WordPress site and go up from there depending on scope. Most small business websites fall in the $999 to $1,800+ range. I provide a clear quote after learning about your needs.",
   },
   {
     question: "How long does a project take?",

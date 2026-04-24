@@ -18,15 +18,28 @@ export interface PricingTier {
   price: string;
   description: string;
   includes: string[];
+  bestFor?: string;
   featured?: boolean;
+  featuredLabel?: string;
 }
 
 export interface CarePlan {
   name: string;
   price: string;
   period: string;
+  description?: string;
   features: string[];
+  exclusions?: string[];
   featured?: boolean;
+  featuredLabel?: string;
+}
+
+export interface PricingLane {
+  label: string;
+  heading: string;
+  subtext: string;
+  tone: "quick" | "custom";
+  points: string[];
 }
 
 export interface ProcessStep {

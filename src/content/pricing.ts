@@ -1,146 +1,204 @@
-import type { PricingTier, CarePlan, PricingFactor } from "./types";
+import type {
+  PricingTier,
+  CarePlan,
+  PricingFactor,
+  PricingLane,
+} from "./types";
 
-/** Budget-friendly entry points */
-export const entryTiers: PricingTier[] = [
+export const pricingLanes: PricingLane[] = [
   {
-    name: "WordPress Site",
-    price: "$200",
-    description:
-      "A clean, professional WordPress website for businesses that need a reliable online presence without a custom build.",
-    includes: [
-      "WordPress theme setup and customization",
-      "Up to 3 pages",
-      "Mobile-responsive design",
-      "Contact form setup",
-      "Basic SEO and security plugins",
-      "Launch support",
+    label: "WordPress / Quick Start",
+    heading: "Launch quickly on WordPress",
+    subtext:
+      "The lower-cost, faster launch path for businesses that want a clean site on a flexible platform they can edit later.",
+    tone: "quick",
+    points: [
+      "Lower upfront investment",
+      "Faster launch timeline",
+      "Easy to edit after launch",
     ],
   },
   {
-    name: "Landing Page",
-    price: "$500",
+    label: "Custom Builds",
+    heading: "Build a more tailored custom presence",
+    subtext:
+      "For businesses that need more design control, cleaner positioning, and a more purpose-built path to inquiries.",
+    tone: "custom",
+    points: [
+      "More tailored messaging and structure",
+      "Stronger design and brand control",
+      "Built for flexibility and growth",
+    ],
+  },
+];
+
+export const quickStartTiers: PricingTier[] = [
+  {
+    name: "WordPress One-Page Starter",
+    price: "$349",
     description:
-      "A single focused page, ideal for a specific service, promotion, or a business that needs a clean web presence fast.",
+      "A clean one-page WordPress presence with a straightforward launch scope.",
+    bestFor: "Simple service businesses launching on a lean budget",
     includes: [
-      "One-page custom design",
-      "Mobile-responsive layout",
-      "Contact form or CTA",
-      "Basic SEO setup",
+      "One-page layout with core sections",
+      "Mobile-ready setup",
+      "Contact form",
+      "Basic launch setup",
+    ],
+  },
+  {
+    name: "WordPress 3-Page Starter",
+    price: "$649",
+    description:
+      "A practical Home, Services, and Contact website without a full custom build.",
+    bestFor: "Businesses that need clarity and credibility fast",
+    includes: [
+      "3 page structure (Home, Services, Contact)",
+      "Theme customization and brand styling",
+      "Mobile optimization",
+      "Contact form setup",
+    ],
+  },
+  {
+    name: "WordPress 5-Page Business Site",
+    price: "$899",
+    description:
+      "A fuller structure with room for service detail, FAQs, and proof content.",
+    bestFor: "Growing service businesses that need a fuller website",
+    includes: [
+      "Up to 5 pages",
+      "Expanded content structure",
+      "FAQ and proof-focused sections",
+      "On-page SEO essentials",
       "Launch support",
     ],
   },
 ];
 
-/** Custom-built project tiers */
-export const buildTiers: PricingTier[] = [
+export const customBuildTiers: PricingTier[] = [
   {
-    name: "Starter Website",
-    price: "$900",
+    name: "Custom Landing Page",
+    price: "$399",
     description:
-      "A professional multi-page site for businesses ready to establish a clear, credible online presence.",
+      "A focused one-page custom build with cleaner design and a simple path to inquiries.",
+    bestFor:
+      "Early-stage businesses that need a polished custom presence with controlled scope",
     includes: [
-      "3 to 5 custom pages",
-      "Mobile-responsive design",
-      "Service and contact pages",
-      "Basic SEO structure",
-      "Analytics setup",
-      "Launch support",
+      "One-page custom layout and styling",
+      "Core message sections and call-to-action flow",
+      "Mobile optimization",
+      "Basic launch setup",
     ],
-    featured: true,
+  },
+  {
+    name: "Custom Business Website",
+    price: "$999",
+    description:
+      "A custom 3 to 5 page site with stronger structure and polish.",
+    bestFor: "Businesses ready to level up brand and credibility",
+    includes: [
+      "Custom 3 to 5 page architecture",
+      "Tailored design and visual hierarchy",
+      "Service and trust messaging",
+      "Conversion-focused calls to action",
+      "Analytics and launch setup",
+    ],
+    featuredLabel: "Most Requested",
   },
   {
     name: "Growth Website",
-    price: "$1,800",
+    price: "$1,499",
     description:
-      "A more robust site for businesses that need stronger conversion structure, more content, and a polished brand experience.",
+      "A more robust custom site with expanded structure and stronger conversion flow.",
+    bestFor: "Businesses investing in growth and lead quality",
     includes: [
-      "5 to 8+ custom pages",
-      "Advanced layout and design",
-      "Quote/booking form setup",
-      "Content organization",
-      "Performance optimization",
-      "SEO and analytics setup",
-      "Priority launch support",
+      "Expanded custom page and section structure",
+      "Advanced conversion flow planning",
+      "Deeper content organization",
+      "Trust and credibility sections",
+      "Performance and technical polish",
     ],
   },
   {
-    name: "Custom Project",
-    price: "$3,000",
+    name: "Advanced Website / Custom Functionality",
+    price: "$1,800",
     description:
-      "For businesses with specific requirements, integrations, or larger-scope needs. Scoped and quoted individually.",
+      "For businesses that need a more involved website setup with tailored page structure, stronger user flows, and functionality beyond a standard brochure build.",
+    bestFor:
+      "Businesses with more complex service offerings, multiple user paths, or advanced quote and booking needs",
     includes: [
-      "Custom scope and planning",
-      "Advanced functionality",
-      "Third-party integrations",
-      "Complex design requirements",
-      "Extended development timeline",
-      "Dedicated support",
+      "More involved site architecture and page planning",
+      "Advanced quote or booking flow setup",
+      "Custom content sections and reusable layouts",
+      "Third-party integrations (CRM, scheduling, automation tools)",
+      "Additional functional complexity and QA depth",
     ],
   },
 ];
 
-/** All tiers combined (for backward compat) */
-export const tiers: PricingTier[] = [...entryTiers, ...buildTiers];
+export const entryTiers: PricingTier[] = quickStartTiers;
+export const buildTiers: PricingTier[] = customBuildTiers;
+export const tiers: PricingTier[] = [...quickStartTiers, ...customBuildTiers];
 
 export const carePlans: CarePlan[] = [
   {
-    name: "Essential",
-    price: "$25",
-    period: "/month",
+    name: "Managed Hosting",
+    price: "$20",
+    period: "/mo",
+    description:
+      "Basic hosting and site essentials. No ongoing design or development support.",
     features: [
-      "Hosting included",
-      "SSL certificate & uptime checks",
-      "Security updates",
+      "Secure hosting",
+      "SSL certificate",
+      "Routine backups",
+      "Uptime monitoring",
+      "Basic domain and DNS help if needed",
+    ],
+    exclusions: [
+      "Content edits",
+      "Design changes",
+      "Larger updates",
+      "New pages or features",
+      "Active ongoing support",
+    ],
+  },
+  {
+    name: "Website Care",
+    price: "$59",
+    period: "/mo",
+    description:
+      "For clients who want continued help keeping their site updated and running smoothly.",
+    featuredLabel: "Recommended",
+    features: [
+      "Everything in Managed Hosting",
+      "Regular maintenance checks",
+      "Contact form checks",
+      "One small content update per month",
       "Light support via email",
     ],
-  },
-  {
-    name: "Basic Care",
-    price: "$50",
-    period: "/month",
-    features: [
-      "Everything in Essential",
-      "Monthly site health check",
-      "Contact form monitoring",
-      "One small content update per month",
-      "Basic performance monitoring",
-    ],
     featured: true,
-  },
-  {
-    name: "Standard Support",
-    price: "$100",
-    period: "/month",
-    features: [
-      "Everything in Basic Care",
-      "Regular edits and content updates",
-      "Faster support turnaround",
-      "Priority email support",
-      "Performance monitoring",
-      "Monthly maintenance check-in",
-    ],
   },
 ];
 
 export const pricingFactors: PricingFactor[] = [
   {
-    title: "Number of pages",
-    text: "More pages means more design, content, and development work.",
+    title: "Platform and build path",
+    text: "WordPress projects use a faster setup. Custom projects include more tailored planning, design control, and conversion structure.",
   },
   {
-    title: "Content readiness",
-    text: "Projects move faster when text, images, and branding materials are provided upfront.",
+    title: "Scope and content depth",
+    text: "Page count matters, but section complexity and content depth usually have a bigger impact on effort.",
   },
   {
-    title: "Custom functionality",
-    text: "Forms, booking systems, third-party integrations, and special features add to scope.",
+    title: "Design direction",
+    text: "More tailored visual direction and custom layout work increase production time.",
   },
   {
-    title: "Design complexity",
-    text: "Unique layouts, custom graphics, and advanced visual requirements take more time.",
+    title: "Functionality",
+    text: "Advanced quote or booking flows, automations, and integrations increase technical scope and QA time.",
   },
   {
     title: "Timeline",
-    text: "Rush timelines may affect pricing. Standard timelines are 2 to 4 weeks for most projects.",
+    text: "Rush timelines or phased launch requirements can change total pricing.",
   },
 ];

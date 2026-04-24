@@ -221,15 +221,300 @@ p {
   transform: translateY(-2px);
 }
 
-/* ---- Pricing entry-tier grid ---- */
-.pricing-entry-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+/* ---- Pricing ---- */
+.pricing-path-overview {
+  padding-top: 1.75rem;
 }
 
-.pricing-entry-card {
-  grid-template-columns: 1fr auto;
+.pricing-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.pricing-path-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.pricing-path-card-quick {
+  border-color: var(--border);
+  background: #FFFFFF;
+}
+
+.pricing-path-card-custom {
+  border-color: var(--accent-muted);
+  background: #F7FBF9;
+}
+
+.pricing-path-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.pricing-path-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.pricing-path-summary {
+  font-size: 0.9375rem;
+  max-width: 60ch;
+}
+
+.pricing-path-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+}
+
+.pricing-path-points li {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.pricing-path-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.53em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.pricing-path-start {
+  margin-top: auto;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pricing-lane-section {
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+}
+
+.pricing-lane-shell {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.pricing-lane-header {
+  max-width: 760px;
+}
+
+.pricing-tier-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.25rem;
+}
+
+.pricing-tier-card-quick {
+  border-color: var(--border);
+}
+
+.pricing-tier-card-custom {
+  border-color: #D9E9E0;
+  background: #FCFEFD;
+}
+
+.pricing-tier-badge {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  margin-bottom: 0.625rem;
+  display: inline-flex;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.pricing-tier-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-tier-price {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  color: var(--accent);
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.pricing-tier-description {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.pricing-tier-fit {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.pricing-factors-section {
+  padding-top: 4.25rem;
+  padding-bottom: 4.25rem;
+}
+
+.pricing-factors-list {
+  border-top: 1px solid var(--border-light);
+}
+
+.pricing-factor-row {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border-light);
+  display: grid;
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.pricing-factor-row h3 {
+  font-size: 0.975rem;
+  margin: 0;
+}
+
+.pricing-factor-row p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.care-plan-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.care-plan-grid-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.care-plan-featured {
+  border: 1px solid var(--accent-muted);
+  background: #F7FBF9;
+}
+
+.care-plan-badge {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FFFFFF;
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0.22rem 0.65rem;
+  margin-bottom: 0.625rem;
+  display: inline-flex;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.care-plan-price-wrap {
+  display: flex;
+  gap: 0.2rem;
+  align-items: baseline;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.care-plan-price {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  color: var(--accent);
+  font-size: 2rem;
+}
+
+.care-plan-price-wrap span {
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+.care-plan-description {
+  font-size: 0.875rem;
+  margin-bottom: 0.875rem;
+}
+
+.care-plan-boundary {
+  font-size: 0.8125rem;
+  color: #8A2C2C;
+  background: #FFF4F4;
+  border: 1px solid #F0D2D2;
+  border-radius: var(--radius);
+  padding: 0.55rem 0.65rem;
+  margin: 0.1rem 0 0.9rem;
+  max-width: none;
+}
+
+.care-plan-list-label {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.care-plan-list-label-muted {
+  margin-top: 1rem;
+  color: var(--text-tertiary);
+}
+
+.care-plan-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.care-plan-list li {
+  position: relative;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 0.95rem;
+}
+
+.care-plan-list li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+}
+
+.care-plan-list-muted li {
+  color: var(--text-tertiary);
+}
+
+.care-plan-list-muted li::before {
+  background: var(--border);
 }
 
 /* ---- Project Grid ---- */
@@ -1023,13 +1308,28 @@ p {
     grid-template-columns: 1fr !important;
   }
 
-  .pricing-factor {
-    grid-template-columns: 1fr !important;
-    gap: 0.25rem !important;
+  .pricing-path-grid {
+    grid-template-columns: 1fr;
   }
 
-  .pricing-entry-card {
-    grid-template-columns: 1fr !important;
+  .pricing-path-card {
+    padding: 1.2rem;
+  }
+
+  .pricing-lane-header {
+    max-width: none;
+  }
+
+  .pricing-lane-section,
+  .pricing-factors-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .pricing-factor-row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding: 0.95rem 0;
   }
 
   .project-modal-backdrop {
