@@ -3,37 +3,11 @@ import {
   CONTACT_FORM_SUBJECT,
   hasTriggeredContactHoneypot,
 } from "@/lib/contact";
+import { limitContactByIdentifier } from "@/lib/rate-limit";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY?.trim() ?? "";
-const RATE_LIMIT_WINDOW_MS = 60_000;
-const MAX_REQUESTS_PER_WINDOW = 3;
 const WEB3FORMS_TIMEOUT_MS = 10_000;
-
-/* Simple in-memory rate limiter (per-IP, resets on deploy) */
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
-
-function isRateLimited(ip: string): boolean {
-  pruneRateLimitMap();
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-
-  if (!entry || now > entry.resetAt) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-
-  entry.count++;
-  return entry.count > MAX_REQUESTS_PER_WINDOW;
-}
-
-/* Clean up stale entries periodically */
-function pruneRateLimitMap(): void {
-  const now = Date.now();
-  for (const [ip, entry] of rateLimitMap) {
-    if (now > entry.resetAt) rateLimitMap.delete(ip);
-  }
-}
 
 function getClientIP(req: NextRequest): string {
   return (
@@ -65,11 +39,25 @@ export async function POST(req: NextRequest) {
   const ip = getClientIP(req);
 
   /* Rate limiting */
-  if (isRateLimited(ip)) {
+  const rateLimitResult = await limitContactByIdentifier(`contact:${ip}`);
+  if (!rateLimitResult.success) {
+    const retryAfterSeconds = Math.max(
+      1,
+      Math.ceil((rateLimitResult.resetAt - Date.now()) / 1000),
+    );
+
     console.warn(`[contact] Rate limited: ${ip}`);
     return NextResponse.json(
       { success: false, error: "Too many requests. Please try again later." },
-      { status: 429 },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(retryAfterSeconds),
+          "X-RateLimit-Limit": String(rateLimitResult.limit),
+          "X-RateLimit-Remaining": String(rateLimitResult.remaining),
+          "X-RateLimit-Reset": String(rateLimitResult.resetAt),
+        },
+      },
     );
   }
 
@@ -141,7 +129,9 @@ export async function POST(req: NextRequest) {
     };
 
     if (res.ok && data.success) {
-      console.info(`[contact] Submission success | service: ${payload.service}`);
+      console.info(
+        `[contact] Submission success | service: ${payload.service}`,
+      );
       return NextResponse.json({ success: true });
     }
 

@@ -40,6 +40,15 @@ The contact form submits to the local `/api/contact` route, which then forwards 
 WEB3FORMS_ACCESS_KEY=your_key_here
 ```
 
+3. Add Upstash Redis credentials for shared cross-instance rate limiting:
+
+```bash
+UPSTASH_REDIS_REST_URL=your_upstash_url
+UPSTASH_REDIS_REST_TOKEN=your_upstash_token
+```
+
+If Upstash env vars are omitted, the API falls back to an in-memory limiter (acceptable for local development, not ideal for multi-instance production).
+
 Without that env var, the form will stay visible but show a configuration error instead of sending.
 
 ## Analytics Configuration
@@ -56,9 +65,13 @@ Without that env var, analytics stays disabled.
 
 ```bash
 npm run lint
-npx tsc --noEmit
+npm run typecheck
 npm run build
 ```
+
+## CI
+
+GitHub Actions runs `lint`, `typecheck`, and `build` on pushes and pull requests to `main`.
 
 ## Notes
 

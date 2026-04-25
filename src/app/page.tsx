@@ -283,23 +283,23 @@ export default function HomePage() {
         />
         <div className="home-pricing-grid-wrap">
           <CardGrid minWidth="220px">
-          {pricingPreview.map((tier, i) => (
-            <FadeIn key={tier.name} delay={i * 80}>
-              <div
-                className={`card home-pricing-card ${tier.featured ? "home-pricing-card-featured" : ""}`}
-              >
-                {tier.featured && (
-                  <span className="home-pricing-badge">Most Common</span>
-                )}
-                <h3 className="home-pricing-title">{tier.name}</h3>
-                <p className="home-pricing-note">{tier.note}</p>
-                <p className="home-pricing-price">
-                  <span>from</span>
-                  {tier.startingAt}
-                </p>
-              </div>
-            </FadeIn>
-          ))}
+            {pricingPreview.map((tier, i) => (
+              <FadeIn key={tier.name} delay={i * 80}>
+                <div
+                  className={`card home-pricing-card ${tier.featured ? "home-pricing-card-featured" : ""}`}
+                >
+                  {tier.featured && (
+                    <span className="home-pricing-badge">Most Common</span>
+                  )}
+                  <h3 className="home-pricing-title">{tier.name}</h3>
+                  <p className="home-pricing-note">{tier.note}</p>
+                  <p className="home-pricing-price">
+                    <span>from</span>
+                    {tier.startingAt}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
           </CardGrid>
         </div>
         <FadeIn>
