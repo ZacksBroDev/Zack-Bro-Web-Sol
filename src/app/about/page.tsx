@@ -12,7 +12,7 @@ import { brand } from "@/content/site";
 export const metadata = createMetadata({
   title: "About",
   description:
-    "Founder-led web business helping local service businesses build professional, conversion-focused websites. Based in Colorado.",
+    "Websites for local service businesses that need to look credible online. Clear, professional, inquiry-focused execution.",
   path: "/about",
 });
 
@@ -20,22 +20,14 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        label="About"
-        title="A founder-led web studio for local service businesses."
-        subtitle={`${brand.name} is a founder-led web business focused on building professional, modern websites for local service businesses.`}
+        label="ABOUT"
+        title="Websites for local service businesses that need to look credible online."
+        subtitle="I build clean, modern websites that help service businesses make a stronger first impression and make it easier for customers to get in touch."
       />
 
       {/* Founder Section */}
       <SectionShell variant="alt">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns:
-              "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
-            gap: "3rem",
-            alignItems: "start",
-          }}
-        >
+        <div className="about-founder-grid">
           <FadeIn>
             <div
               style={{
@@ -45,7 +37,7 @@ export default function AboutPage() {
                 overflow: "hidden",
                 border: "1px solid var(--border)",
                 boxShadow: "var(--shadow-sm)",
-                maxWidth: "340px",
+                maxWidth: "300px",
                 margin: "0 auto",
               }}
             >
@@ -60,7 +52,7 @@ export default function AboutPage() {
             </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <div>
+            <div style={{ maxWidth: "660px" }}>
               <h2 style={{ marginBottom: "1.25rem" }}>
                 Hi, I&apos;m {brand.founder}.
               </h2>
@@ -72,7 +64,7 @@ export default function AboutPage() {
                 }}
               >
                 {founderBio.map((paragraph, i) => (
-                  <p key={i} style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
+                  <p key={i} className="about-copy">
                     {paragraph}
                   </p>
                 ))}
@@ -84,11 +76,13 @@ export default function AboutPage() {
 
       {/* Approach */}
       <SectionShell>
-        <SectionIntro
-          label="My Approach"
-          heading="How I think about building websites for businesses."
-        />
-        <div style={{ marginTop: "2.5rem" }}>
+        <div className="about-section-intro">
+          <SectionIntro
+            label="MY APPROACH"
+            heading="How I think about building websites for businesses."
+          />
+        </div>
+        <div className="about-feature-grid">
           <FeatureGrid items={approach} minWidth="300px" />
         </div>
       </SectionShell>
@@ -96,35 +90,29 @@ export default function AboutPage() {
       {/* Who I Work With */}
       <SectionShell variant="alt" narrow>
         <FadeIn>
-          <p className="section-label">Who I Work With</p>
+          <p className="section-label">WHO I WORK WITH</p>
           <h2 className="section-heading" style={{ marginBottom: "1.25rem" }}>
-            Businesses where the website directly influences who reaches out.
+            Best fit for local service businesses.
           </h2>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-          >
-            <p style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
-              I mostly work with local service businesses where first
-              impressions start with a Google search: dental practices,
-              detailing shops, landscapers, fitness studios, contractors, and
-              similar service brands.
-            </p>
-            <p style={{ fontSize: "0.9375rem", lineHeight: 1.7 }}>
-              The goal is simple: a website that looks professional,
-              communicates clearly, and makes the next step easy.
-            </p>
-          </div>
+          <p className="about-copy">
+            I mostly work with businesses where a customer checks the website
+            before making contact. If your site helps shape trust, explain your
+            services, and guide someone toward calling or requesting a quote,
+            you are the kind of business I build for.
+          </p>
         </FadeIn>
       </SectionShell>
 
       {/* Commitments */}
       <SectionShell>
-        <SectionIntro
-          label="What You Can Expect"
-          heading="When you work with me, here's what I commit to."
-        />
-        <div style={{ marginTop: "2.5rem" }}>
-          <FeatureGrid items={commitments} variant="card" />
+        <div className="about-section-intro">
+          <SectionIntro
+            label="WHAT YOU CAN EXPECT"
+            heading="What working with me is actually like."
+          />
+        </div>
+        <div className="about-feature-grid">
+          <FeatureGrid items={commitments} minWidth="250px" variant="card" />
         </div>
       </SectionShell>
 

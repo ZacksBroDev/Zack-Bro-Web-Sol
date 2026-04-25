@@ -30,11 +30,36 @@ export const services: ServiceItem[] = [
 
 /* ── Pricing preview (homepage) ── */
 export const pricingPreview = [
-  { name: "WordPress Site", price: "from $349" },
-  { name: "Landing Page", price: "from $399" },
-  { name: "Starter Website", price: "from $999" },
-  { name: "Growth Website", price: "from $1,499" },
-  { name: "Advanced Website / Custom Functionality", price: "from $1,800" },
+  {
+    name: "WordPress Site",
+    startingAt: "$349",
+    note: "Quick launch for a clear online presence.",
+    featured: false,
+  },
+  {
+    name: "Landing Page",
+    startingAt: "$399",
+    note: "Focused page for one offer or campaign.",
+    featured: false,
+  },
+  {
+    name: "Starter Website",
+    startingAt: "$999",
+    note: "Best fit for most local service businesses.",
+    featured: true,
+  },
+  {
+    name: "Growth Website",
+    startingAt: "$1,499",
+    note: "More pages and stronger sales messaging.",
+    featured: false,
+  },
+  {
+    name: "Advanced + Custom Features",
+    startingAt: "$1,800",
+    note: "Custom functionality for complex needs.",
+    featured: false,
+  },
 ] as const;
 
 /* ── Process steps ── */

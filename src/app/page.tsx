@@ -279,32 +279,29 @@ export default function HomePage() {
         <SectionIntro
           label="Pricing"
           heading="Straightforward pricing. No hidden fees."
-          subtext="Every project is scoped to your needs. Here are typical starting points."
+          subtext="Every project is scoped to your needs. Here are typical starting ranges by project type."
         />
-        <CardGrid minWidth="220px">
+        <div className="home-pricing-grid-wrap">
+          <CardGrid minWidth="220px">
           {pricingPreview.map((tier, i) => (
             <FadeIn key={tier.name} delay={i * 80}>
               <div
-                className="card"
-                style={{ textAlign: "center", padding: "2rem 1.5rem" }}
+                className={`card home-pricing-card ${tier.featured ? "home-pricing-card-featured" : ""}`}
               >
-                <h3 style={{ fontSize: "1.0625rem", marginBottom: "0.75rem" }}>
-                  {tier.name}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-instrument-serif), Georgia, serif",
-                    fontSize: "1.75rem",
-                    color: "var(--accent)",
-                    marginBottom: "0",
-                  }}
-                >
-                  {tier.price}
+                {tier.featured && (
+                  <span className="home-pricing-badge">Most Common</span>
+                )}
+                <h3 className="home-pricing-title">{tier.name}</h3>
+                <p className="home-pricing-note">{tier.note}</p>
+                <p className="home-pricing-price">
+                  <span>from</span>
+                  {tier.startingAt}
                 </p>
               </div>
             </FadeIn>
           ))}
-        </CardGrid>
+          </CardGrid>
+        </div>
         <FadeIn>
           <div style={{ marginTop: "2.5rem" }}>
             <TrackedLink

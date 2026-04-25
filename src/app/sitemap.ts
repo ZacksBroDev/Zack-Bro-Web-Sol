@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
+import { brand } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://zbweb.solutions";
+  const baseUrl = brand.url;
   const routes = [
     { path: "", changeFrequency: "weekly" as const, priority: 1 },
     { path: "/services", changeFrequency: "monthly" as const, priority: 0.9 },

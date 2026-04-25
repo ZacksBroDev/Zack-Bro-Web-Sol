@@ -131,6 +131,45 @@ p {
   line-height: 1.7;
 }
 
+/* ---- About page ---- */
+.about-founder-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.15fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-copy {
+  font-size: 0.975rem;
+  line-height: 1.72;
+  max-width: 64ch;
+}
+
+.about-section-intro {
+  max-width: 760px;
+}
+
+.about-section-intro .section-heading {
+  max-width: 27ch;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.about-feature-grid {
+  margin-top: 2.25rem;
+}
+
+.about-feature-grid .card {
+  padding: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .about-founder-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 /* ---- Page Hero (inner pages) ---- */
 .page-hero {
   padding-top: 4rem;
@@ -374,6 +413,88 @@ p {
   color: var(--text-secondary);
   font-weight: 500;
   margin-bottom: 0.4rem;
+}
+
+.home-pricing-grid-wrap {
+  padding-top: 0.25rem;
+}
+
+.home-pricing-grid-wrap .card-grid {
+  gap: 1.2rem;
+}
+
+.home-pricing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  text-align: left;
+  height: 100%;
+  min-height: 208px;
+  padding: 1.4rem;
+  border-color: var(--border);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FCFCFA 100%);
+}
+
+.home-pricing-card-featured {
+  border-color: var(--accent-muted);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FCFA 100%);
+  box-shadow: 0 6px 22px rgba(45, 106, 79, 0.08);
+}
+
+.home-pricing-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--accent-muted);
+  padding: 0.22rem 0.58rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.home-pricing-title {
+  font-size: 1.06rem;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 19ch;
+}
+
+.home-pricing-note {
+  margin: 0;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: var(--text-tertiary);
+  max-width: 28ch;
+}
+
+.home-pricing-price {
+  margin: 0.35rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.42rem;
+  font-family: var(--font-instrument-serif), Georgia, serif;
+  font-size: clamp(1.9rem, 2.8vw, 2.25rem);
+  line-height: 1.08;
+  color: var(--accent);
+}
+
+.home-pricing-price span {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-weight: 600;
 }
 
 .pricing-factors-section {
@@ -1362,6 +1483,23 @@ p {
 
   .pricing-path-grid {
     grid-template-columns: 1fr;
+  }
+
+  .home-pricing-card {
+    min-height: 188px;
+    padding: 1.2rem;
+  }
+
+  .home-pricing-title {
+    font-size: 1rem;
+  }
+
+  .home-pricing-note {
+    font-size: 0.79rem;
+  }
+
+  .home-pricing-price {
+    font-size: clamp(1.65rem, 7vw, 1.95rem);
   }
 
   .pricing-path-card {

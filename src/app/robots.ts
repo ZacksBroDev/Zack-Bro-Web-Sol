@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { brand } from "@/content/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://zbweb.solutions/sitemap.xml",
+    sitemap: `${brand.url}/sitemap.xml`,
   };
 }

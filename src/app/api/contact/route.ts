@@ -8,11 +8,13 @@ const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY?.trim() ?? "";
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const MAX_REQUESTS_PER_WINDOW = 3;
+const WEB3FORMS_TIMEOUT_MS = 10_000;
 
 /* Simple in-memory rate limiter (per-IP, resets on deploy) */
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
 function isRateLimited(ip: string): boolean {
+  pruneRateLimitMap();
   const now = Date.now();
   const entry = rateLimitMap.get(ip);
 
@@ -32,7 +34,6 @@ function pruneRateLimitMap(): void {
     if (now > entry.resetAt) rateLimitMap.delete(ip);
   }
 }
-setInterval(pruneRateLimitMap, 5 * 60_000);
 
 function getClientIP(req: NextRequest): string {
   return (
@@ -131,6 +132,7 @@ export async function POST(req: NextRequest) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(WEB3FORMS_TIMEOUT_MS),
     });
 
     const data = (await res.json()) as {
@@ -139,9 +141,7 @@ export async function POST(req: NextRequest) {
     };
 
     if (res.ok && data.success) {
-      console.info(
-        `[contact] Submission success: ${payload.name} <${payload.email}> | service: ${payload.service}`,
-      );
+      console.info(`[contact] Submission success | service: ${payload.service}`);
       return NextResponse.json({ success: true });
     }
 
