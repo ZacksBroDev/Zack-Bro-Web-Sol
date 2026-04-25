@@ -18,10 +18,10 @@ export const metadata = createMetadata({
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="about-page">
       <PageHero
         label="ABOUT"
-        title="Websites for local service businesses that need to look credible online."
+        title="Modern websites for local service businesses."
         subtitle="I build clean, modern websites that help service businesses make a stronger first impression and make it easier for customers to get in touch."
       />
 
@@ -52,8 +52,8 @@ export default function AboutPage() {
             </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <div style={{ maxWidth: "660px" }}>
-              <h2 style={{ marginBottom: "1.25rem" }}>
+            <div className="about-founder-copy-col">
+              <h2 className="about-founder-heading">
                 Hi, I&apos;m {brand.founder}.
               </h2>
               <div
@@ -91,7 +91,7 @@ export default function AboutPage() {
       <SectionShell variant="alt" narrow>
         <FadeIn>
           <p className="section-label">WHO I WORK WITH</p>
-          <h2 className="section-heading" style={{ marginBottom: "1.25rem" }}>
+          <h2 className="section-heading about-who-heading">
             Best fit for local service businesses.
           </h2>
           <p className="about-copy">
@@ -119,9 +119,10 @@ export default function AboutPage() {
       <PageCta
         title="Let's talk about your project."
         description="Tell me what your business needs and I will follow up with clear next steps."
+        copyMaxWidth="560px"
         secondaryHref={brand.bookingUrl}
         secondaryLabel="Book a Free Call"
       />
-    </>
+    </div>
   );
 }

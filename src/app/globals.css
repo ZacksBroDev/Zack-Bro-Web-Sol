@@ -132,41 +132,100 @@ p {
 }
 
 /* ---- About page ---- */
+.about-page .page-hero-title {
+  font-size: clamp(2.1rem, 4vw, 3.15rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+
+.about-page .section-subtext {
+  font-size: 1.11rem;
+  line-height: 1.74;
+  color: #4B4B4B;
+  max-width: 60ch;
+}
+
 .about-founder-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1.15fr);
-  gap: 3rem;
+  grid-template-columns: minmax(220px, 0.78fr) minmax(0, 1.22fr);
+  gap: 3.1rem;
   align-items: start;
 }
 
+.about-founder-copy-col {
+  max-width: 700px;
+}
+
+.about-founder-heading {
+  margin-bottom: 1.35rem;
+  line-height: 1.16;
+  letter-spacing: -0.012em;
+}
+
 .about-copy {
-  font-size: 0.975rem;
-  line-height: 1.72;
-  max-width: 64ch;
+  font-size: 1.03rem;
+  line-height: 1.76;
+  color: #494949;
+  max-width: 62ch;
 }
 
 .about-section-intro {
-  max-width: 760px;
+  max-width: 800px;
+}
+
+.about-section-intro .section-label {
+  margin-bottom: 0.8rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
 }
 
 .about-section-intro .section-heading {
   max-width: 27ch;
-  line-height: 1.18;
+  line-height: 1.16;
   letter-spacing: -0.01em;
 }
 
 .about-feature-grid {
-  margin-top: 2.25rem;
+  margin-top: 2.15rem;
 }
 
 .about-feature-grid .card {
-  padding: 1.5rem;
+  padding: 1.65rem;
+  border-color: var(--border);
+}
+
+.about-feature-grid h3 {
+  font-size: 1.16rem;
+  line-height: 1.24;
+  letter-spacing: -0.008em;
+}
+
+.about-feature-grid p {
+  font-size: 0.99rem !important;
+  line-height: 1.7 !important;
+  color: #4D4D4D;
+}
+
+.about-who-heading {
+  margin-bottom: 1.15rem;
+  max-width: 18ch;
 }
 
 @media (max-width: 900px) {
   .about-founder-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .about-page .section-subtext {
+    font-size: 1.04rem;
+  }
+
+  .about-copy,
+  .about-feature-grid p {
+    font-size: 0.98rem !important;
   }
 }
 
