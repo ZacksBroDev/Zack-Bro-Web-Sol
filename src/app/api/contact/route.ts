@@ -6,17 +6,14 @@ import {
 } from "@/lib/contact";
 import { limitContactByIdentifier } from "@/lib/rate-limit";
 
-// RESEND_TO_EMAIL: where inquiries are delivered.
-// Before zbweb.solutions domain is verified in Resend, use your Resend account email (e.g. zackaryzbrown@gmail.com).
-// After domain verification, set this to zackary@zbweb.solutions and RESEND_FROM_EMAIL to contact@zbweb.solutions.
 function getResendToEmail(): string {
-  return process.env["RESEND_TO_EMAIL"]?.trim() ?? "zackaryzbrown@gmail.com";
+  return process.env["RESEND_TO_EMAIL"]?.trim() ?? "zackary@zbweb.solutions";
 }
 
 function getResendFromEmail(): string {
   return (
     process.env["RESEND_FROM_EMAIL"]?.trim() ??
-    "Contact Form <onboarding@resend.dev>"
+    "Contact Form <contact@zbweb.solutions>"
   );
 }
 
