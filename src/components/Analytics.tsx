@@ -1,6 +1,7 @@
 import Script from "next/script";
 
-const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+const measurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? "G-THKH3RZVBJ";
 
 export function Analytics() {
   if (!measurementId) {
