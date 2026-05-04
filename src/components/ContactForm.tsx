@@ -12,10 +12,20 @@ import { CONTACT_FORM_SUBJECT, CONTACT_HONEYPOT_FIELD } from "@/lib/contact";
 const SUBMISSION_COOLDOWN_MS = 60_000;
 const MIN_FILL_TIME_MS = 3_000;
 const LAST_SUBMISSION_KEY = "zbws-contact-last-submission-at";
+const CONTACT_EMAIL = "zackary@zbweb.solutions";
+const DEFAULT_ERROR_MESSAGE =
+  "Something went wrong. Please try again or email me directly.";
+
+type ErrorSource = "client" | "server";
+type FormError = { message: string; source: ErrorSource };
+
+function shouldShowFallbackEmail(message: string): boolean {
+  return !message.toLowerCase().includes(CONTACT_EMAIL);
+}
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [formError, setFormError] = useState<FormError | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [startedAt] = useState(() => Date.now());
   const formStartedRef = useRef(false);
@@ -30,7 +40,7 @@ export function ContactForm() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    setErrorMessage(null);
+    setFormError(null);
     trackFormSubmitted();
 
     const now = Date.now();
@@ -41,18 +51,20 @@ export function ContactForm() {
 
     if (lastSubmission && now - lastSubmission < SUBMISSION_COOLDOWN_MS) {
       setSubmitting(false);
-      setErrorMessage(
-        "Please wait about a minute before sending another inquiry.",
-      );
+      setFormError({
+        message: "Please wait about a minute before sending another inquiry.",
+        source: "client",
+      });
       trackFormFailure("cooldown");
       return;
     }
 
     if (now - startedAt < MIN_FILL_TIME_MS) {
       setSubmitting(false);
-      setErrorMessage(
-        "Please take a moment to review your details and try again.",
-      );
+      setFormError({
+        message: "Please take a moment to review your details and try again.",
+        source: "client",
+      });
       trackFormFailure("too_fast");
       return;
     }
@@ -72,29 +84,30 @@ export function ContactForm() {
         body: JSON.stringify(body),
       });
 
-      const data = (await res.json()) as {
+      const data: {
         success?: boolean;
         message?: string;
         error?: string;
-      };
+      } | null = res.headers.get("content-type")?.includes("application/json")
+        ? ((await res.json()) as {
+            success?: boolean;
+            message?: string;
+            error?: string;
+          })
+        : null;
 
-      if (res.ok && data.success) {
+      if (res.ok && data?.success) {
         form.reset();
         window.localStorage.setItem(LAST_SUBMISSION_KEY, String(now));
         setSubmitted(true);
         trackFormSuccess();
       } else {
-        const msg =
-          data.message ??
-          data.error ??
-          "Something went wrong. Please try again or email me directly.";
-        setErrorMessage(msg);
+        const msg = data?.message ?? data?.error ?? DEFAULT_ERROR_MESSAGE;
+        setFormError({ message: msg, source: "server" });
         trackFormFailure(msg);
       }
     } catch {
-      setErrorMessage(
-        "Something went wrong. Please try again or email me directly.",
-      );
+      setFormError({ message: DEFAULT_ERROR_MESSAGE, source: "client" });
       trackFormFailure("network_error");
     } finally {
       setSubmitting(false);
@@ -298,18 +311,39 @@ export function ContactForm() {
           style={{ resize: "vertical", minHeight: "120px" }}
         />
       </div>
-      {errorMessage && (
+      {formError && (
         <p
           role="alert"
-          style={{ color: "#c53030", fontSize: "0.9375rem", fontWeight: 500 }}
+          style={{
+            color: formError.source === "server" ? "#c53030" : "#975a16",
+            fontSize: "0.9375rem",
+            fontWeight: 500,
+          }}
         >
-          {errorMessage}{" "}
-          <a
-            href="mailto:zackary@zbweb.solutions"
-            style={{ color: "inherit", textDecoration: "underline" }}
+          <span
+            style={{
+              display: "block",
+              fontSize: "0.75rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.04em",
+              marginBottom: "0.25rem",
+              color: "var(--text-tertiary)",
+            }}
           >
-            zackary@zbweb.solutions
-          </a>
+            {formError.source === "server" ? "Server Response" : "Form Check"}
+          </span>
+          {formError.message}
+          {shouldShowFallbackEmail(formError.message) && (
+            <>
+              {" "}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                style={{ color: "inherit", textDecoration: "underline" }}
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </>
+          )}
         </p>
       )}
       <button
