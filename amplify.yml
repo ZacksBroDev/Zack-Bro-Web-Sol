@@ -7,9 +7,8 @@ frontend:
     build:
       commands:
         - rm -f .env.production
-        - test -n "$WEB3FORMS_ACCESS_KEY" && echo "WEB3FORMS_ACCESS_KEY present in Amplify build env" || echo "WEB3FORMS_ACCESS_KEY missing in Amplify build env"
-        - test -n "$ACCESS_KEY" && echo "ACCESS_KEY present in Amplify build env" || echo "ACCESS_KEY missing in Amplify build env"
-        - env | grep -E '^(WEB3FORMS_ACCESS_KEY|ACCESS_KEY|UPSTASH_REDIS_REST_URL|UPSTASH_REDIS_REST_TOKEN)=' >> .env.production || true
+        - test -n "$RESEND_API_KEY" && echo "RESEND_API_KEY present in Amplify build env" || echo "RESEND_API_KEY missing in Amplify build env"
+        - env | grep -E '^(RESEND_API_KEY|UPSTASH_REDIS_REST_URL|UPSTASH_REDIS_REST_TOKEN)=' >> .env.production || true
         - env | grep -E '^NEXT_PUBLIC_' >> .env.production || true
         - npm run build
   artifacts:

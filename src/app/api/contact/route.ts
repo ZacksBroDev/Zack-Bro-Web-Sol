@@ -1,22 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 import {
   CONTACT_FORM_SUBJECT,
   hasTriggeredContactHoneypot,
 } from "@/lib/contact";
 import { limitContactByIdentifier } from "@/lib/rate-limit";
 
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const WEB3FORMS_TIMEOUT_MS = 10_000;
+const TO_EMAIL = "zackary@zbweb.solutions";
 
-function getWeb3FormsAccessKey(): string {
-  // Read from runtime env for SSR hosts where build-time env differs.
-  const keyFromPrimary = process.env["WEB3FORMS_ACCESS_KEY"]?.trim();
-  if (keyFromPrimary) return keyFromPrimary;
-
-  const keyFromFallback = process.env["ACCESS_KEY"]?.trim();
-  if (keyFromFallback) return keyFromFallback;
-
-  return "";
+function getResendApiKey(): string {
+  return process.env["RESEND_API_KEY"]?.trim() ?? "";
 }
 
 function getClientIP(req: NextRequest): string {
@@ -47,7 +40,7 @@ function validateFields(body: Record<string, string>): string | null {
 
 export async function POST(req: NextRequest) {
   const ip = getClientIP(req);
-  const accessKey = getWeb3FormsAccessKey();
+  const apiKey = getResendApiKey();
 
   /* Rate limiting */
   const rateLimitResult = await limitContactByIdentifier(`contact:${ip}`);
@@ -100,10 +93,8 @@ export async function POST(req: NextRequest) {
   }
 
   /* Check config */
-  if (!accessKey) {
-    console.error(
-      "[contact] WEB3FORMS_ACCESS_KEY/ACCESS_KEY is not configured.",
-    );
+  if (!apiKey) {
+    console.error("[contact] RESEND_API_KEY is not configured.");
     return NextResponse.json(
       {
         success: false,
@@ -114,51 +105,56 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  /* Submit to Web3Forms */
+  /* Send email via Resend */
   try {
-    const payload = {
-      access_key: accessKey,
-      subject: CONTACT_FORM_SUBJECT,
-      name: body.name?.trim(),
-      email: body.email?.trim(),
-      phone: body.phone?.trim() || "Not provided",
-      business: body.business?.trim() || "Not provided",
-      website: body.website?.trim() || "Not provided",
-      service: body.service,
-      timeline: body.timeline || "Not specified",
-      message: body.message?.trim(),
-    };
+    const resend = new Resend(apiKey);
 
-    const res = await fetch(WEB3FORMS_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(WEB3FORMS_TIMEOUT_MS),
+    const {
+      name,
+      email,
+      phone,
+      business,
+      website,
+      service,
+      timeline,
+      message,
+    } = body;
+
+    const { error } = await resend.emails.send({
+      from: "Contact Form <onboarding@resend.dev>",
+      to: TO_EMAIL,
+      replyTo: email?.trim(),
+      subject: CONTACT_FORM_SUBJECT,
+      text: [
+        `Name: ${name?.trim()}`,
+        `Email: ${email?.trim()}`,
+        `Phone: ${phone?.trim() || "Not provided"}`,
+        `Business: ${business?.trim() || "Not provided"}`,
+        `Website: ${website?.trim() || "Not provided"}`,
+        `Service: ${service}`,
+        `Timeline: ${timeline || "Not specified"}`,
+        ``,
+        `Message:`,
+        message?.trim(),
+      ].join("\n"),
     });
 
-    const data = (await res.json()) as {
-      success?: boolean;
-      message?: string;
-    };
-
-    if (res.ok && data.success) {
-      console.info(
-        `[contact] Submission success | service: ${payload.service}`,
+    if (error) {
+      console.error("[contact] Resend error:", error);
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "Something went wrong. Please try again or email directly at zackary@zbweb.solutions.",
+        },
+        { status: 502 },
       );
-      return NextResponse.json({ success: true });
     }
 
-    console.error(`[contact] Web3Forms error:`, data);
-    return NextResponse.json(
-      {
-        success: false,
-        error:
-          "Something went wrong. Please try again or email directly at zackary@zbweb.solutions.",
-      },
-      { status: 502 },
-    );
+    console.info(`[contact] Submission success | service: ${service}`);
+    return NextResponse.json({ success: true });
   } catch (err) {
-    console.error(`[contact] Fetch error:`, err);
+    console.error("[contact] Fetch error:", err);
     return NextResponse.json(
       {
         success: false,
