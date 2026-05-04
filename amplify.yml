@@ -8,7 +8,7 @@ frontend:
       commands:
         - rm -f .env.production
         - test -n "$RESEND_API_KEY" && echo "RESEND_API_KEY present in Amplify build env" || echo "RESEND_API_KEY missing in Amplify build env"
-        - env | grep -E '^(RESEND_API_KEY|UPSTASH_REDIS_REST_URL|UPSTASH_REDIS_REST_TOKEN)=' >> .env.production || true
+        - env | grep -E '^(RESEND_API_KEY|RESEND_TO_EMAIL|RESEND_FROM_EMAIL|UPSTASH_REDIS_REST_URL|UPSTASH_REDIS_REST_TOKEN)=' >> .env.production || true
         - env | grep -E '^NEXT_PUBLIC_' >> .env.production || true
         - npm run build
   artifacts:

@@ -6,7 +6,19 @@ import {
 } from "@/lib/contact";
 import { limitContactByIdentifier } from "@/lib/rate-limit";
 
-const TO_EMAIL = "zackary@zbweb.solutions";
+// RESEND_TO_EMAIL: where inquiries are delivered.
+// Before zbweb.solutions domain is verified in Resend, use your Resend account email (e.g. zackaryzbrown@gmail.com).
+// After domain verification, set this to zackary@zbweb.solutions and RESEND_FROM_EMAIL to contact@zbweb.solutions.
+function getResendToEmail(): string {
+  return process.env["RESEND_TO_EMAIL"]?.trim() ?? "zackaryzbrown@gmail.com";
+}
+
+function getResendFromEmail(): string {
+  return (
+    process.env["RESEND_FROM_EMAIL"]?.trim() ??
+    "Contact Form <onboarding@resend.dev>"
+  );
+}
 
 function getResendApiKey(): string {
   return process.env["RESEND_API_KEY"]?.trim() ?? "";
@@ -121,8 +133,8 @@ export async function POST(req: NextRequest) {
     } = body;
 
     const { error } = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: TO_EMAIL,
+      from: getResendFromEmail(),
+      to: getResendToEmail(),
       replyTo: email?.trim(),
       subject: CONTACT_FORM_SUBJECT,
       text: [
