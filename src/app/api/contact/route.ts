@@ -6,11 +6,18 @@ import {
 import { limitContactByIdentifier } from "@/lib/rate-limit";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const ACCESS_KEY =
-  process.env.WEB3FORMS_ACCESS_KEY?.trim() ??
-  process.env.ACCESS_KEY?.trim() ??
-  "";
 const WEB3FORMS_TIMEOUT_MS = 10_000;
+
+function getWeb3FormsAccessKey(): string {
+  // Read from runtime env for SSR hosts where build-time env differs.
+  const keyFromPrimary = process.env["WEB3FORMS_ACCESS_KEY"]?.trim();
+  if (keyFromPrimary) return keyFromPrimary;
+
+  const keyFromFallback = process.env["ACCESS_KEY"]?.trim();
+  if (keyFromFallback) return keyFromFallback;
+
+  return "";
+}
 
 function getClientIP(req: NextRequest): string {
   return (
@@ -40,6 +47,7 @@ function validateFields(body: Record<string, string>): string | null {
 
 export async function POST(req: NextRequest) {
   const ip = getClientIP(req);
+  const accessKey = getWeb3FormsAccessKey();
 
   /* Rate limiting */
   const rateLimitResult = await limitContactByIdentifier(`contact:${ip}`);
@@ -92,7 +100,7 @@ export async function POST(req: NextRequest) {
   }
 
   /* Check config */
-  if (!ACCESS_KEY) {
+  if (!accessKey) {
     console.error(
       "[contact] WEB3FORMS_ACCESS_KEY/ACCESS_KEY is not configured.",
     );
@@ -109,7 +117,7 @@ export async function POST(req: NextRequest) {
   /* Submit to Web3Forms */
   try {
     const payload = {
-      access_key: ACCESS_KEY,
+      access_key: accessKey,
       subject: CONTACT_FORM_SUBJECT,
       name: body.name?.trim(),
       email: body.email?.trim(),
