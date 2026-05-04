@@ -51,6 +51,8 @@ If Upstash env vars are omitted, the API falls back to an in-memory limiter (acc
 
 Without that env var, the form will stay visible but show a configuration error instead of sending.
 
+If deploying to AWS Amplify with SSR/API routes, make sure your build writes server env vars into `.env.production` before `next build` (see `amplify.yml` in this repo). Otherwise route handlers may not receive values like `WEB3FORMS_ACCESS_KEY` at runtime.
+
 ## Analytics Configuration
 
 Google Analytics 4 is optional. If you want the built-in CTA and form events to send to GA, add your measurement ID:
