@@ -6,7 +6,10 @@ import {
 import { limitContactByIdentifier } from "@/lib/rate-limit";
 
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
-const ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY?.trim() ?? "";
+const ACCESS_KEY =
+  process.env.WEB3FORMS_ACCESS_KEY?.trim() ??
+  process.env.ACCESS_KEY?.trim() ??
+  "";
 const WEB3FORMS_TIMEOUT_MS = 10_000;
 
 function getClientIP(req: NextRequest): string {
@@ -90,7 +93,9 @@ export async function POST(req: NextRequest) {
 
   /* Check config */
   if (!ACCESS_KEY) {
-    console.error("[contact] WEB3FORMS_ACCESS_KEY is not configured.");
+    console.error(
+      "[contact] WEB3FORMS_ACCESS_KEY/ACCESS_KEY is not configured.",
+    );
     return NextResponse.json(
       {
         success: false,
